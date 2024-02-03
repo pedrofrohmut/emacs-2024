@@ -1,6 +1,75 @@
 ;; Options ######################################################################
 
+(setq inhibit-startup-message t)
+
+;; Insert spaces  instead of tabs (no \t)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+
+;; Tab only indent on the correct position
+(setq-default tab-always-indent nil)
+
+;; Line Numbers
+(global-display-line-numbers-mode t)
+(setq-default display-line-numbers-type 'relative)
+
+;; Insert closing character like ) } ]
+(electric-pair-mode t)
+
+;; Saves your location in files for the next time you open it
+(save-place-mode t)
+
+;; Files
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+
+;; Fill Column (Ruler)
+(setq-default fill-column 121)
+(global-display-fill-column-indicator-mode t)
+(setq-default display-fill-column-indicator-column 101)
+
+;; Show cursor position in statusbar
+(setq column-number-mode t)
+
+;; Dont open gui dialogs
+(setq use-dialog-box nil)
+
+;; Update emacs buffers when the files change outside (keep buffers sync)
+(setq global-auto-revert-non-file-buffers t)
+(global-auto-revert-mode t)
+
+;; Stop the beep
 (setq visible-bell t)
+
+;; Set no wrap lines
+(set-default 'truncate-lines t)
+
+;; Tabs
+(setq tab-bar-new-tab-choice "*scratch*")
+(setq tab-bar-new-tab-to 'rightmost)
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-new-button-show nil)
+
+;; Config Files #####################################################################################
+
+;; Set up package.el to work with MELPA
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("elpa" . "https://elpa.gnu.org/packages/"))
+(package-initialize)
+;;(package-refresh-contents)
+
+;; Config Files #####################################################################################
+
+;; Evil - Vi mode and extra evil packages
+(load "~/.config/emacs/config/evil.el")
+
+;; Theme - theme, mode line, etc
+(load "~/.config/emacs/config/theme.el")
+
+;; Terminals
+(load "~/.config/emacs/config/terminals.el")
 
 ;; Keybinds #####################################################################
 
@@ -11,25 +80,9 @@
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit) ;; Make ESC quit prompts
 
-;; DirEd Keys
-(define-key dired-mode-map (kbd "C-c n f") 'dired-create-empty-file)
-(define-key dired-mode-map (kbd "C-c n d") 'dired-create-directory)
-(evil-define-key 'normal dired-mode-map (kbd "n f") 'dired-create-empty-file)
-(evil-define-key 'normal dired-mode-map (kbd "n d") 'dired-create-directory)
-
-;; Project
-(define-key evil-normal-state-map (kbd "C-q") 'project-find-file)
-
-;; Buffers
-(define-key evil-normal-state-map (kbd "M-p") 'previous-buffer)
-(define-key evil-normal-state-map (kbd "M-n") 'next-buffer)
-
 ;; Minibuffer
 (define-key minibuffer-mode-map (kbd "C-w") 'backward-kill-word)
 (define-key minibuffer-mode-map (kbd "C-u") 'backward-kill-sentence)
-
-;; Shell Command
-(define-key evil-normal-state-map (kbd "M-1") 'shell-command)
 
 ;; Startup Function #############################################################
 
@@ -48,29 +101,18 @@
 (add-hook 'emacs-startup-hook #'my/restore-gc-threshhold)
 (add-hook 'write-file-hooks    'delete-trailing-whitespace)
 
-;; Straight.el Bootstrap #########################################################
-
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name
-        "straight/repos/straight.el/bootstrap.el"
-        (or (bound-and-true-p straight-base-dir)
-            user-emacs-directory)))
-      (bootstrap-version 7))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
-
-;; Integration between straight.el and use-package
-;;(straight-use-package 'use-package)
-
-;; Theming - theme and mode line
-(load "~/.config/emacs/config/theme.el")
-
-;; Evil - Vi mode and extra evil packages
-(load "~/.config/emacs/config/evil.el")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("4594d6b9753691142f02e67b8eb0fda7d12f6cc9f1299a49b819312d6addad1d" "88f7ee5594021c60a4a6a1c275614103de8c1435d6d08cc58882f920e0cec65e" "34cf3305b35e3a8132a0b1bdf2c67623bc2cb05b125f8d7d26bd51fd16d547ec" default))
+ '(package-selected-packages
+   '(evil-lion evil-numbers evil-surround evil-commentary evil-collection evil)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
