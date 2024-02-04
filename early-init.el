@@ -7,7 +7,7 @@
 (add-to-list 'default-frame-alist '(background-color . "#1a1b26"))
 (add-to-list 'default-frame-alist '(foreground-color . "#d5d5d5"))
 (add-to-list 'default-frame-alist '(font . "FiraMono Nerd Font 12"))
-(add-to-list 'default-frame-alist '(alpha . (88 . 88)))
+(add-to-list 'default-frame-alist '(alpha . (90 . 90)))
 
 ;; Tranparency for Terminal #####################################################
 

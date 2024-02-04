@@ -1,7 +1,7 @@
 (unless (package-installed-p 'doom-themes)
   (package-install 'doom-themes))
 
-(load-theme 'doom-oceanic-next t)
+(load-theme 'doom-tokyo-night t)
 
 ;; Apperance ###################################################################
 

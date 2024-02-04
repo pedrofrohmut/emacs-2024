@@ -16,6 +16,7 @@
 
 ;; Insert closing character like ) } ]
 (electric-pair-mode t)
+(show-paren-mode t)
 
 ;; Saves your location in files for the next time you open it
 (save-place-mode t)
@@ -60,6 +61,20 @@
 (package-initialize)
 ;;(package-refresh-contents)
 
+;; Keybinds #####################################################################
+
+(global-unset-key (kbd "C-h"))  ;; Can still use help with F1
+(global-unset-key (kbd "C-l"))  ;; Can use evil zz
+(global-unset-key (kbd "C-j"))  ;; Not useful before
+(global-unset-key (kbd "C-k"))  ;; Not useful either
+(global-unset-key (kbd "C-SPC"))
+
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit) ;; Make ESC quit prompts
+
+;; Minibuffer
+(define-key minibuffer-mode-map (kbd "C-w") 'backward-kill-word)
+(define-key minibuffer-mode-map (kbd "C-u") 'backward-kill-sentence)
+
 ;; Config Files #####################################################################################
 
 ;; Evil - Vi mode and extra evil packages
@@ -74,18 +89,8 @@
 ;; Utils: Visual Fill Column, Restart Emacs
 (load "~/.config/emacs/config/utils.el")
 
-;; Keybinds #####################################################################
-
-(global-unset-key (kbd "C-h"))  ;; Can still use help with F1
-(global-unset-key (kbd "C-l"))  ;; Can use evil zz
-(global-unset-key (kbd "C-j"))  ;; Not useful before
-(global-unset-key (kbd "C-k"))  ;; Not useful either
-
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit) ;; Make ESC quit prompts
-
-;; Minibuffer
-(define-key minibuffer-mode-map (kbd "C-w") 'backward-kill-word)
-(define-key minibuffer-mode-map (kbd "C-u") 'backward-kill-sentence)
+;; Snippets
+(load "~/.config/emacs/config/snippets.el")
 
 ;; Startup Function #############################################################
 
@@ -112,7 +117,7 @@
  '(custom-safe-themes
    '("4594d6b9753691142f02e67b8eb0fda7d12f6cc9f1299a49b819312d6addad1d" "88f7ee5594021c60a4a6a1c275614103de8c1435d6d08cc58882f920e0cec65e" "34cf3305b35e3a8132a0b1bdf2c67623bc2cb05b125f8d7d26bd51fd16d547ec" default))
  '(package-selected-packages
-   '(restart-emacs visual-fill-column evil-lion evil-numbers evil-surround evil-commentary evil-collection evil)))
+   '(emmet-mode restart-emacs visual-fill-column evil-lion evil-numbers evil-surround evil-commentary evil-collection evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

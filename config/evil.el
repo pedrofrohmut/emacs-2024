@@ -70,7 +70,6 @@
 (define-key evil-normal-state-map (kbd "SPC f e") 'dired)
 
 ;; Buffers
-(define-key evil-normal-state-map (kbd "SPC b e") 'eval-buffer)
 (define-key evil-normal-state-map (kbd "SPC b b") 'ibuffer)
 
 ;; DirEd Keys
@@ -88,6 +87,21 @@
 
 ;; Easier to press: move focused window to a new tab
 (define-key evil-normal-state-map (kbd "SPC w t") (kbd "C-w T"))
+
+;; Eval
+(define-key evil-normal-state-map (kbd "SPC b e") 'eval-buffer)
+(define-key evil-normal-state-map (kbd "SPC e e") 'eval-last-sexp)
+
+;; Better use of Cursor Jump Keys
+(define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
+(define-key evil-normal-state-map (kbd "L") 'evil-end-of-line)
+(define-key evil-normal-state-map (kbd "M") 'evil-jump-item)
+
+;; Replace / Query-Replace
+(keymap-set evil-normal-state-map "SPC s s" 'replace-regexp)
+(keymap-set evil-visual-state-map "SPC s s" 'replace-regexp)
+(keymap-set evil-normal-state-map "SPC s q" 'query-replace-regexp)
+(keymap-set evil-visual-state-map "SPC s q" 'query-replace-regexp)
 
 ;; Evil - Must Have #############################################################
 
@@ -119,10 +133,13 @@
 (with-eval-after-load 'evil
   (require 'evil-numbers))
 
-;; Evil Increase hovered number
-(define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt)
-;; Evil Decrease hovered number
-(define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
+(keymap-set evil-normal-state-map "C-x" 'evil-numbers/dec-at-pt)
+(keymap-set evil-visual-state-map "C-x" 'evil-numbers/dec-at-pt)
+(keymap-set evil-normal-state-map "C-a" 'evil-numbers/inc-at-pt)
+(keymap-set evil-visual-state-map "C-a" 'evil-numbers/inc-at-pt)
+
+(keymap-set evil-visual-state-map "g C-x" 'evil-numbers/dec-at-pt-incremental)
+(keymap-set evil-visual-state-map "g C-a" 'evil-numbers/inc-at-pt-incremental)
 
 ;; Evil Lion Align stuff by stuff gl= gL, gl; gL(
 (unless (package-installed-p 'evil-lion)
