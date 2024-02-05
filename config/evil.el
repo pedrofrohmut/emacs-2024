@@ -51,7 +51,11 @@
     (evil-scroll-line-up 12)))
 
 ;; Shell Command
-(define-key evil-normal-state-map (kbd "M-1") 'shell-command)
+(keymap-set evil-normal-state-map "M-;" 'shell-command)
+
+;; Navigation
+(keymap-set evil-normal-state-map "M-j" 'evil-window-next)
+(keymap-set evil-normal-state-map "M-k" 'tab-recent)
 
 ;; Change Tab normal mode
 (define-key evil-normal-state-map (kbd "C-l") 'tab-next)
@@ -64,6 +68,18 @@
 (define-key evil-normal-state-map (kbd "SPC t u") 'tab-undo)
 (define-key evil-normal-state-map (kbd "SPC t l") 'tab-move)
 (define-key evil-normal-state-map (kbd "SPC t h") (lambda() (interactive) (tab-move -1)))
+
+;; Tabs by Number
+(keymap-set evil-normal-state-map "M-1" (lambda() (interactive) (tab-select 1)))
+(keymap-set evil-normal-state-map "M-2" (lambda() (interactive) (tab-select 2)))
+(keymap-set evil-normal-state-map "M-3" (lambda() (interactive) (tab-select 3)))
+(keymap-set evil-normal-state-map "M-4" (lambda() (interactive) (tab-select 4)))
+(keymap-set evil-normal-state-map "M-5" (lambda() (interactive) (tab-select 5)))
+(keymap-set evil-normal-state-map "M-6" (lambda() (interactive) (tab-select 6)))
+(keymap-set evil-normal-state-map "M-7" (lambda() (interactive) (tab-select 7)))
+(keymap-set evil-normal-state-map "M-8" (lambda() (interactive) (tab-select 8)))
+(keymap-set evil-normal-state-map "M-9" (lambda() (interactive) (tab-select 9)))
+(keymap-set evil-normal-state-map "M-0" (lambda() (interactive) (tab-select 0)))
 
 ;; Find File
 (define-key evil-normal-state-map (kbd "C-q") 'project-find-file)

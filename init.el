@@ -11,8 +11,8 @@
 (setq-default tab-always-indent nil)
 
 ;; Line Numbers
-(global-display-line-numbers-mode t)
-(setq-default display-line-numbers-type 'relative)
+;(global-display-line-numbers-mode t)
+;(setq-default display-line-numbers-type 'relative)
 
 ;; Insert closing character like ) } ]
 (electric-pair-mode t)
@@ -46,11 +46,8 @@
 ;; Set no wrap lines
 (set-default 'truncate-lines t)
 
-;; Tabs
-(setq tab-bar-new-tab-choice "*scratch*")
-(setq tab-bar-new-tab-to 'rightmost)
-(setq tab-bar-close-button-show nil)
-(setq tab-bar-new-button-show nil)
+;; Set root dir for project.el
+(setq project-vc-extra-root-markers '(".project.el" ".projectile" ))
 
 ;; Config Files #####################################################################################
 
@@ -67,9 +64,13 @@
 (global-unset-key (kbd "C-l"))  ;; Can use evil zz
 (global-unset-key (kbd "C-j"))  ;; Not useful before
 (global-unset-key (kbd "C-k"))  ;; Not useful either
-(global-unset-key (kbd "C-SPC"))
+(global-unset-key (kbd "C-SPC")) ;; For emmet
+(global-unset-key (kbd "M-k")) ;; To tab-recent
+(global-unset-key (kbd "M-j")) ;; To next-window
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit) ;; Make ESC quit prompts
+
+(keymap-global-set "C-c C-d" 'cd) ;; Easy change emacs current directory
 
 ;; Minibuffer
 (define-key minibuffer-mode-map (kbd "C-w") 'backward-kill-word)
@@ -91,6 +92,9 @@
 
 ;; Snippets
 (load "~/.config/emacs/config/snippets.el")
+
+;; Tabs
+(load "~/.config/emacs/config/tabs.el")
 
 ;; Startup Function #############################################################
 
@@ -123,4 +127,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(tab-bar ((t (:box nil :foreground "#13141c" :background "#13141c"))))
+ '(tab-bar-tab ((t (:box nil :foreground "#ff0000" :background "#13141c")))))
