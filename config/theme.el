@@ -1,7 +1,8 @@
 (unless (package-installed-p 'doom-themes)
   (package-install 'doom-themes))
 
-(load-theme 'doom-tokyo-night t)
+;(load-theme 'doom-tokyo-night t)
+(load-theme 'wombat t)
 
 ;; Apperance ###################################################################
 
@@ -12,7 +13,6 @@
 
 ;(set-frame-parameter nil 'alpha-background 85)
 ;(set-background-color "#1a1b26"))
-(set-face-foreground 'line-number "#a3a3a3")
 ;(set-background-color "#1a1b26")
 
 ;; UI
@@ -20,6 +20,15 @@
 ;(menu-bar-mode 0)
 ;(scroll-bar-mode 0)
 ;(set-fringe-mode 12) ;; Adds side padding to frames
+
+;; Default color Tokyo Night
+;(set-face-foreground 'font-lock-string-face "#9ece6a")
+;(set-face-foreground 'font-lock-comment-face "#51587a")
+
+;; Custom colors
+(set-face-foreground 'line-number "#a3a3a3")           ;; Light Gray
+(set-face-foreground 'font-lock-string-face "#ff9933") ;; Orange
+(set-face-foreground 'font-lock-comment-face "#37a")   ;; Gray Blue
 
 (unless (package-installed-p 'doom-modeline)
   (package-install 'doom-modeline))
