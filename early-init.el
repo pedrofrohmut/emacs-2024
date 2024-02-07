@@ -8,7 +8,8 @@
 (add-to-list 'default-frame-alist '(foreground-color . "#d5d5d5"))
 ;; (add-to-list 'default-frame-alist '(font . "FiraMono Nerd Font 13"))
 (add-to-list 'default-frame-alist '(font . "Fira Code 13"))
-(add-to-list 'default-frame-alist '(alpha . (90 . 90)))
+;;(add-to-list 'default-frame-alist '(alpha . (70 . 70))) ;; Everything transparent
+(add-to-list 'default-frame-alist '(alpha-background . 85))
 
 ;; UI
 (tool-bar-mode 0)

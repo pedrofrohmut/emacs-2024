@@ -18,13 +18,13 @@
 (require 'evil)
 (add-hook 'after-init-hook 'evil-mode)
 
-;; Evil Unbind ##################################################################
-(define-key evil-normal-state-map (kbd "C-p") nil)
-(define-key evil-normal-state-map (kbd "C-n") nil)
-(define-key evil-normal-state-map (kbd "<normal-state> C-b") nil)
-(define-key evil-normal-state-map (kbd "<normal-state> C-f") nil)
-(define-key evil-normal-state-map (kbd "s")   nil)
-(define-key evil-normal-state-map (kbd "S")   nil)
+;; Evil Keymaps ###############################################################################
+
+;; Unsets
+(keymap-unset evil-normal-state-map "C-p")
+(keymap-unset evil-normal-state-map "C-n")
+(keymap-unset evil-normal-state-map "s")
+(keymap-unset evil-normal-state-map "S")
 
 ;; Redo
 (define-key evil-normal-state-map (kbd "U") 'evil-redo)
@@ -39,16 +39,10 @@
 (define-key evil-insert-state-map (kbd "C-l") 'evil-delete-char)
 
 ;; Scroll down
-(define-key evil-normal-state-map (kbd "C-j")
-  (lambda ()
-    (interactive)
-    (evil-scroll-line-down 12)))
+(define-key evil-normal-state-map (kbd "C-j") (lambda () (interactive) (evil-scroll-down 12)))
 
 ;; Scroll up
-(define-key evil-normal-state-map (kbd "C-k")
-  (lambda ()
-    (interactive)
-    (evil-scroll-line-up 12)))
+(define-key evil-normal-state-map (kbd "C-k") (lambda () (interactive) (evil-scroll-up 12)))
 
 ;; Shell Command
 (keymap-set evil-normal-state-map "M-;" 'shell-command)
@@ -81,18 +75,38 @@
 (keymap-set evil-normal-state-map "M-9" (lambda() (interactive) (tab-select 9)))
 (keymap-set evil-normal-state-map "M-0" (lambda() (interactive) (tab-select 0)))
 
+;; Windows
+(keymap-set evil-normal-state-map "C-w n" 'evil-window-vnew)
+
 ;; Find File
 (define-key evil-normal-state-map (kbd "C-q") 'project-find-file)
 (define-key evil-normal-state-map (kbd "SPC f e") 'dired)
 
+;; Config
+(keymap-set evil-normal-state-map "SPC f c" (lambda() (interactive) (find-file "~/.config/emacs/init.el")))
+
 ;; Buffers
-(define-key evil-normal-state-map (kbd "SPC b b") 'ibuffer)
+(keymap-set evil-normal-state-map "SPC b b" 'ibuffer)
+(keymap-set evil-normal-state-map "SPC b s" 'switch-to-buffer)
+(keymap-set evil-normal-state-map "SPC b n" 'next-buffer)
+(keymap-set evil-normal-state-map "SPC b p" 'previous-buffer)
+(keymap-set evil-normal-state-map "SPC b d" 'kill-this-buffer)
+
+;; Help
+(keymap-set evil-normal-state-map "SPC h f" 'describe-function)
+(keymap-set evil-normal-state-map "SPC h v" 'describe-variable)
+(keymap-set evil-normal-state-map "SPC h k" 'describe-key)
 
 ;; DirEd Keys
 (evil-define-key 'normal dired-mode-map (kbd "n f") 'dired-create-empty-file)
 (evil-define-key 'normal dired-mode-map (kbd "n d") 'dired-create-directory)
 
-;; Utils ########################################################################
+;; Text Scale
+(keymap-set evil-normal-state-map "C-0" 'text-scale-adjust)
+(keymap-set evil-normal-state-map "C-=" 'text-scale-increase)
+(keymap-set evil-normal-state-map "C--" 'text-scale-decrease)
+
+;; Utils ############################################################################################
 
 ;; Close all windows and tabs but the focused one
 (define-key evil-normal-state-map (kbd "SPC w o")
@@ -124,6 +138,7 @@
 ;; ;; Makes evil keys consistent in more places than just evil mode default
 (unless (package-installed-p 'evil-collection)
   (package-install 'evil-collection))
+
 (with-eval-after-load 'evil
   (require 'evil-collection)
   (evil-collection-init)
@@ -132,6 +147,7 @@
 ;; Evil Commentary gcc gc<object>
 (unless (package-installed-p 'evil-commentary)
   (package-install 'evil-commentary))
+
 (with-eval-after-load 'evil
   (require 'evil-commentary)
   (evil-commentary-mode t))
@@ -139,6 +155,7 @@
 ;; Evil Surround (emulate tim pope)
 (unless (package-installed-p 'evil-surrond)
   (package-install 'evil-surround))
+
 (with-eval-after-load 'evil
   (require 'evil-surround)
   (global-evil-surround-mode t))
@@ -146,6 +163,7 @@
 ;; Evil-numbers
 (unless (package-installed-p 'evil-numbers)
   (package-install 'evil-numbers))
+
 (with-eval-after-load 'evil
   (require 'evil-numbers))
 
@@ -160,6 +178,19 @@
 ;; Evil Lion Align stuff by stuff gl= gL, gl; gL(
 (unless (package-installed-p 'evil-lion)
   (package-install 'evil-lion))
+
 (with-eval-after-load 'evil
   (require 'evil-lion)
   (evil-lion-mode t))
+
+;; Evil Google (visual hint)
+(unless (package-installed-p 'evil-goggles)
+  (package-install 'evil-goggles))
+
+(with-eval-after-load 'evil
+  (require 'evil-goggles)
+  (evil-goggles-mode))
+
+(custom-set-faces
+ '(evil-goggles-default-face
+   ((t (:background "#f00" :foreground "#fff")))))

@@ -13,3 +13,5 @@
 
 (unless (package-installed-p 'restart-emacs)
   (package-install 'restart-emacs))
+
+(keymap-set evil-normal-state-map "SPC h r r" 'restart-emacs)
