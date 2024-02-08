@@ -4,16 +4,32 @@
 
 ;; Evil #########################################################################
 
+;; Behaviour
 (setq evil-want-C-u-scroll t)
 (setq evil-want-C-u-delete t)
 (setq evil-want-C-i-jump t)
 (setq evil-want-Y-yank-to-eol t)
-(setq evil-vsplit-window-right t)
-(setq evil-split-window-below t)
-(setq evil-cross-lines t)
-(setq evil-move-beyond-eol t)
 (setq evil-undo-system 'undo-redo)
 (setq evil-want-keybinding nil) ; Evil collection asks for it
+(setq evil-kill-on-visual-paste nil) ;; when you replace in visual mode dont change the register
+(setq evil-echo-state nil) ;; Dont need this
+
+;; Windows
+(setq evil-vsplit-window-right t)
+(setq evil-split-window-below t)
+
+;; Cursor movement
+(setq evil-move-beyond-eol nil)
+(setq evil-cross-lines nil)
+
+;; Indentation
+(setq evil-auto-indent t)
+(setq evil-shift-width 4)
+(setq evil-indent-convert-tabs t)
+
+;; Cursor
+(setq cursor-type 'block)
+(setq set-cursor-color "#ff0")
 
 (require 'evil)
 (add-hook 'after-init-hook 'evil-mode)
@@ -43,9 +59,6 @@
 
 ;; Scroll up
 (define-key evil-normal-state-map (kbd "C-k") (lambda () (interactive) (evil-scroll-up 12)))
-
-;; Shell Command
-(keymap-set evil-normal-state-map "M-;" 'shell-command)
 
 ;; Navigation
 (keymap-set evil-normal-state-map "M-j" 'evil-window-next)
@@ -78,16 +91,12 @@
 ;; Windows
 (keymap-set evil-normal-state-map "C-w n" 'evil-window-vnew)
 
-;; Find File
-(define-key evil-normal-state-map (kbd "C-q") 'project-find-file)
-(define-key evil-normal-state-map (kbd "SPC f e") 'dired)
-
-;; Config
-(keymap-set evil-normal-state-map "SPC f c" (lambda() (interactive) (find-file "~/.config/emacs/init.el")))
+;; Utils ############################################################################################
 
 ;; Buffers
 (keymap-set evil-normal-state-map "SPC b b" 'ibuffer)
 (keymap-set evil-normal-state-map "SPC b s" 'switch-to-buffer)
+;(keymap-set evil-normal-state-map "SPC b s" 'consult-buffer) ;; Can load stuff just to show preview
 (keymap-set evil-normal-state-map "SPC b n" 'next-buffer)
 (keymap-set evil-normal-state-map "SPC b p" 'previous-buffer)
 (keymap-set evil-normal-state-map "SPC b d" 'kill-this-buffer)
@@ -97,16 +106,22 @@
 (keymap-set evil-normal-state-map "SPC h v" 'describe-variable)
 (keymap-set evil-normal-state-map "SPC h k" 'describe-key)
 
-;; DirEd Keys
-(evil-define-key 'normal dired-mode-map (kbd "n f") 'dired-create-empty-file)
-(evil-define-key 'normal dired-mode-map (kbd "n d") 'dired-create-directory)
+;; Toggle wrap lines
+(keymap-set evil-normal-state-map "SPC h l" 'global-visual-line-mode)
 
 ;; Text Scale
 (keymap-set evil-normal-state-map "C-0" 'text-scale-adjust)
 (keymap-set evil-normal-state-map "C-=" 'text-scale-increase)
 (keymap-set evil-normal-state-map "C--" 'text-scale-decrease)
 
-;; Utils ############################################################################################
+;; Config
+(keymap-set evil-normal-state-map "SPC f c" (lambda() (interactive) (find-file "~/.config/emacs/init.el")))
+
+;; Shell Command
+(keymap-set evil-normal-state-map "M-;" 'shell-command)
+
+;; Find File
+(define-key evil-normal-state-map (kbd "C-q") 'project-find-file)
 
 ;; Close all windows and tabs but the focused one
 (define-key evil-normal-state-map (kbd "SPC w o")
@@ -123,9 +138,14 @@
 (define-key evil-normal-state-map (kbd "SPC e e") 'eval-last-sexp)
 
 ;; Better use of Cursor Jump Keys
-(define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
-(define-key evil-normal-state-map (kbd "L") 'evil-end-of-line)
-(define-key evil-normal-state-map (kbd "M") 'evil-jump-item)
+(keymap-set evil-normal-state-map "H" 'evil-first-non-blank)
+(keymap-set evil-normal-state-map "L" 'evil-end-of-line)
+(keymap-set evil-normal-state-map "M" 'evil-jump-item)
+
+;; Better use of Cursor Jump Keys (Visual Mode)
+(keymap-set evil-visual-state-map "H" 'evil-first-non-blank)
+(keymap-set evil-visual-state-map "L" 'evil-end-of-line)
+(keymap-set evil-visual-state-map "M" 'evil-jump-item)
 
 ;; Replace / Query-Replace
 (keymap-set evil-normal-state-map "SPC s s" 'replace-regexp)
@@ -133,9 +153,15 @@
 (keymap-set evil-normal-state-map "SPC s q" 'query-replace-regexp)
 (keymap-set evil-visual-state-map "SPC s q" 'query-replace-regexp)
 
-;; Evil - Must Have #############################################################
+;; Move on insert mode for japanese typing (Vim users lol)
+(keymap-set evil-insert-state-map "M-h" 'left-char)
+(keymap-set evil-insert-state-map "M-j" 'next-line)
+(keymap-set evil-insert-state-map "M-k" 'previous-line)
+(keymap-set evil-insert-state-map "M-l" 'right-char)
 
-;; ;; Makes evil keys consistent in more places than just evil mode default
+;; Extra Evil Packages #############################################################
+
+;; Makes evil keys consistent in more places than just evil mode default
 (unless (package-installed-p 'evil-collection)
   (package-install 'evil-collection))
 

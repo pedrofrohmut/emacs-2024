@@ -6,3 +6,5 @@ elpa/
 places
 projects
 transient/
+**/tramp
+.markdown-preview.html

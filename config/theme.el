@@ -2,6 +2,9 @@
   (package-install 'doom-themes))
 
 (load-theme 'doom-tokyo-night t)
+;(load-theme 'doom-meltbus t)
+;(load-theme 'doom-ir-black t)
+;(load-theme 'doom-plain-dark t)
 ;(load-theme 'wombat t)
 
 ;; Apperance ###################################################################
@@ -12,14 +15,18 @@
 ;(add-to-list 'default-frame-alist '(alpha . (85 . 85)))
 
 ;(set-frame-parameter nil 'alpha-background 85)
+
+;; Background - Tokyo Night Background
 ;(set-background-color "#1a1b26")
 
 ;; Custom colors
 ;(set-face-foreground 'line-number "#a3a3a3")           ;; Light Gray
-;(set-face-foreground 'font-lock-string-face "#ff9933") ;; Orange
 
-;; Comments are gray blue
-(set-face-attribute 'font-lock-comment-face nil :foreground "#37a")
+;; Comments -> Dark Gray Blue
+(set-face-attribute 'font-lock-comment-face nil :foreground "#369")
+
+;; Strings -> Light Orange
+(set-face-foreground 'font-lock-string-face "#ff9933")
 
 (unless (package-installed-p 'doom-modeline)
   (package-install 'doom-modeline))
