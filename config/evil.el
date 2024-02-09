@@ -61,8 +61,12 @@
 (define-key evil-normal-state-map (kbd "C-k") (lambda () (interactive) (evil-scroll-up 12)))
 
 ;; Navigation
-(keymap-set evil-normal-state-map "M-j" 'evil-window-next)
-(keymap-set evil-normal-state-map "M-k" 'tab-recent)
+;(keymap-set evil-normal-state-map "M-j" 'evil-window-next) ;; It's good but never use
+(keymap-set evil-normal-state-map "M-m" 'tab-recent)
+
+;; Faster movement
+(keymap-set evil-normal-state-map "M-j" (lambda() (interactive) (evil-next-line 12)))
+(keymap-set evil-normal-state-map "M-k" (lambda() (interactive) (evil-previous-line 12)))
 
 ;; Change Tab normal mode
 (define-key evil-normal-state-map (kbd "C-l") 'tab-next)
@@ -92,6 +96,9 @@
 (keymap-set evil-normal-state-map "C-w n" 'evil-window-vnew)
 
 ;; Utils ############################################################################################
+
+;; Completion
+;(keymap-set evil-insert-state-map "C-j" 'completion-at-point)
 
 ;; Buffers
 (keymap-set evil-normal-state-map "SPC b b" 'ibuffer)
@@ -134,8 +141,8 @@
 (define-key evil-normal-state-map (kbd "SPC w t") (kbd "C-w T"))
 
 ;; Eval
-(define-key evil-normal-state-map (kbd "SPC b e") 'eval-buffer)
-(define-key evil-normal-state-map (kbd "SPC e e") 'eval-last-sexp)
+(define-key evil-normal-state-map (kbd "SPC h b e") 'eval-buffer)
+(define-key evil-normal-state-map (kbd "SPC h e e") 'eval-last-sexp)
 
 ;; Better use of Cursor Jump Keys
 (keymap-set evil-normal-state-map "H" 'evil-first-non-blank)

@@ -10,8 +10,8 @@
 (setq inhibit-startup-message t)
 
 ;; Insert spaces  instead of tabs (no \t)
-;(setq-default indent-tabs-mode nil)
-;(setq-default tab-width 4)
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
 ;(setq indent-line-function 'insert-tab)
 
 ;; Tab only indent on the correct position
@@ -118,18 +118,22 @@
 ;; Markdown
 (load "~/.config/emacs/config/markdown.el")
 
-;; Vertico
-(load "~/.config/emacs/config/vertico.el")
+;; Minibuffer
+(load "~/.config/emacs/config/minibuffer.el")
+
+;; Auto-complete
+(load "~/.config/emacs/config/auto-complete.el")
+
+;; Consult
+(load "~/.config/emacs/config/consult.el")
 
 ;; Keybinds #####################################################################
 
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit) ;; Make ESC quit prompts
+;; Make ESC quit prompts
+(keymap-global-set "<escape>" 'keyboard-escape-quit)
 
-(keymap-global-set "C-c C-d" 'cd) ;; Easy change emacs current directory
-
-;; Minibuffer
-(define-key minibuffer-mode-map (kbd "C-w") 'backward-kill-word)
-(define-key minibuffer-mode-map (kbd "C-u") 'backward-kill-sentence)
+;; Easy change emacs current directory
+(keymap-global-set "C-c C-d" 'cd)
 
 ;; Startup Function #############################################################
 
@@ -166,5 +170,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(evil-goggles-default-face ((t (:background "#f00" :foreground "#fff"))))
- '(tab-bar ((t (:box nil :foreground "#13141c" :background "#13141c"))))
- '(tab-bar-tab ((t (:box nil :foreground "#ff0000" :background "#13141c")))))
+ '(tab-bar ((t (:box nil :foreground "#13141c" :background "#13141c")))))
