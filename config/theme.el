@@ -16,14 +16,13 @@
 ;; Typography
 (setq modus-themes-bold-constructs nil)
 
-;; Match paren coloring
-(setq modus-themes-paren-match '(intense))
-
-;; Syntax
-(setq modus-themes-syntax '(yellow-comments))
+;; My Custom Colors #################################################################################
 
 ;; Background - Tokyo Night Background
 (set-background-color "#1a1b26")
+
+;; Custom colors
+;(set-face-foreground 'line-number "#a3a3a3")           ;; Light Gray
 
 ;; Comments -> Dark Gray Blue
 (set-face-attribute 'font-lock-comment-face nil :foreground "#37b")
@@ -31,9 +30,22 @@
 ;; Strings -> Light Orange
 (set-face-foreground 'font-lock-string-face "#ff9933")
 
+;; Tabs
+(set-face-attribute 'tab-bar nil
+                    :foreground "#666" :background "#000")
+
+;; Active Tab
+(set-face-attribute 'tab-bar-tab nil
+                    :foreground "#0ff" :background "#224444")
+
+;; Inactive Tab
+(set-face-attribute 'tab-bar-tab-inactive nil
+                    :foreground "#666" :background "#000")
+
+;; Loads Modus Theme
 (load-theme 'modus-vivendi :no-confirm)
 
-;; Doom theme ###################################################################
+;; Doom theme #######################################################################################
 
 ;(unless (package-installed-p 'doom-themes)
 ;  (package-install 'doom-themes))
@@ -43,24 +55,3 @@
 ;(load-theme 'doom-ir-black t)
 ;(load-theme 'doom-plain-dark t)
 ;(load-theme 'wombat t)
-
-;; Apperance ####################################################################
-
-;(add-to-list 'default-frame-alist '(background-color . "#1a1b26"))
-;(add-to-list 'default-frame-alist '(foreground-color . "#d5d5d5"))
-;(add-to-list 'default-frame-alist '(font . "FiraMono Nerd Font 12"))
-;(add-to-list 'default-frame-alist '(alpha . (85 . 85)))
-
-;(set-frame-parameter nil 'alpha-background 85)
-
-;; Background - Tokyo Night Background
-;(set-background-color "#1a1b26")
-
-;; Custom colors
-;(set-face-foreground 'line-number "#a3a3a3")           ;; Light Gray
-
-;; Comments -> Dark Gray Blue
-;(set-face-attribute 'font-lock-comment-face nil :foreground "#37b")
-
-;; Strings -> Light Orange
-;(set-face-foreground 'font-lock-string-face "#ff9933")

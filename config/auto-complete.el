@@ -7,7 +7,10 @@
 
 (add-hook 'after-init-hook 'global-company-mode)
 
-(keymap-set evil-insert-state-map "C-f" 'company-files)
+;(keymap-set evil-insert-state-map "C-f" 'company-files)
+
+(keymap-set company-mode-map "C-f" 'company-abort)
+;(evil-define-key 'insert company-mode-map (kbd "C-f") 'company-abort)
 
 ;; Possible improvements #################
 
