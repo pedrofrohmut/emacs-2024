@@ -6,7 +6,7 @@
 (setq modus-themes-mode-line '(accented borderless (padding . 4)))
 
 ;; Text Selection (Visual Mode)
-(setq modus-themes-region '(accented))
+;(setq modus-themes-region '(accented))
 
 ;; Minibuffer Completion - Example
 (setq modus-themes-completions
@@ -19,7 +19,7 @@
 ;; My Custom Colors #################################################################################
 
 ;; Background - Tokyo Night Background
-(set-background-color "#1a1b26")
+;(set-background-color "#1a1b26") ;; TODO: check how to change the background color for modus-vivendi
 
 ;; Custom colors
 ;(set-face-foreground 'line-number "#a3a3a3")           ;; Light Gray
@@ -30,6 +30,7 @@
 ;; Strings -> Light Orange
 (set-face-foreground 'font-lock-string-face "#ff9933")
 
+;; TODO: Remove border from tabs
 ;; Tabs
 (set-face-attribute 'tab-bar nil
                     :foreground "#666" :background "#000")
@@ -41,6 +42,10 @@
 ;; Inactive Tab
 (set-face-attribute 'tab-bar-tab-inactive nil
                     :foreground "#666" :background "#000")
+
+;; Override the theme colors
+(setq modus-themes-vivendi-color-overrides
+      '((bg-main . "#1a1b26")))
 
 ;; Loads Modus Theme
 (load-theme 'modus-vivendi :no-confirm)

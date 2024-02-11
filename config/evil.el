@@ -28,8 +28,11 @@
 (setq evil-indent-convert-tabs t)
 
 ;; Cursor
-(setq cursor-type 'block)
-(setq set-cursor-color "#ff0")
+(setq evil-normal-state-cursor   '("yellow" box)
+      evil-insert-state-cursor   '("white"  bar)
+      evil-visual-state-cursor   '("red"    box)
+      evil-replace-state-cursor  '("green"  bar)
+      evil-operator-state-cursor '("white"  bar))
 
 (require 'evil)
 (add-hook 'after-init-hook 'evil-mode)
@@ -116,6 +119,9 @@
 ;; Toggle wrap lines
 (keymap-set evil-normal-state-map "SPC h l" 'global-visual-line-mode)
 
+;; Toggle whitespace
+(keymap-set evil-normal-state-map "SPC h w" 'global-whitespace-mode)
+
 ;; Text Scale
 (keymap-set evil-normal-state-map "C-0" 'text-scale-adjust)
 (keymap-set evil-normal-state-map "C-=" 'text-scale-increase)
@@ -186,7 +192,7 @@
   (evil-commentary-mode t))
 
 ;; Evil Surround (emulate tim pope)
-(unless (package-installed-p 'evil-surrond)
+(unless (package-installed-p 'evil-surround)
   (package-install 'evil-surround))
 
 (with-eval-after-load 'evil

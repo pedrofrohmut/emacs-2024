@@ -128,6 +128,9 @@
 ;; Consult
 (load "~/.config/emacs/config/consult.el")
 
+;; Copy and Paste
+(load "~/.config/emacs/config/copy-paste.el")
+
 ;; Keybinds #####################################################################
 
 ;; Make ESC quit prompts

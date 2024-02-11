@@ -18,8 +18,8 @@
 (keymap-unset emmet-mode-keymap "C-c C-c w")
 
 ;; Setting keys
-(keymap-set evil-insert-state-map "C-SPC" 'emmet-expand-line)
-(keymap-set evil-visual-state-map "C-SPC" 'emmet-wrap-with-markup)
+(keymap-set evil-insert-state-map "C-j" 'emmet-expand-line)
+(keymap-set evil-visual-state-map "C-j" 'emmet-wrap-with-markup)
 
 (add-hook 'emmet-mode-hook (lambda () (setq emmet-indent-after-insert nil)))
 (add-hook 'emmet-mode-hook (lambda () (setq emmet-indentation 2))) ;; indent 2 spaces.
