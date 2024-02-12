@@ -32,7 +32,7 @@
       evil-insert-state-cursor   '("white"  bar)
       evil-visual-state-cursor   '("red"    box)
       evil-replace-state-cursor  '("red"    box)
-      evil-operator-state-cursor '("white"  bar))
+      evil-operator-state-cursor '("white"  box))
 
 (require 'evil)
 (add-hook 'after-init-hook 'evil-mode)
@@ -46,22 +46,22 @@
 (keymap-unset evil-normal-state-map "S")
 
 ;; Redo
-(define-key evil-normal-state-map (kbd "U") 'evil-redo)
+(keymap-set evil-normal-state-map "U" 'evil-redo)
 
 ;; Easy insert linebreak in normal mode
 (define-key evil-normal-state-map (kbd "RET") (kbd "i RET <escape>"))
 
 ;; Ctrl-h as backspace
-(define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+(keymap-set evil-insert-state-map "C-h" 'evil-delete-backward-char-and-join)
 
 ;; Ctrl-l as delete
-(define-key evil-insert-state-map (kbd "C-l") 'evil-delete-char)
+(keymap-set evil-insert-state-map "C-l" 'evil-delete-char)
 
 ;; Scroll down
-(define-key evil-normal-state-map (kbd "C-j") (lambda () (interactive) (evil-scroll-down 12)))
+(keymap-set evil-normal-state-map "C-j" (lambda () (interactive) (evil-scroll-down 12)))
 
 ;; Scroll up
-(define-key evil-normal-state-map (kbd "C-k") (lambda () (interactive) (evil-scroll-up 12)))
+(keymap-set evil-normal-state-map "C-k" (lambda () (interactive) (evil-scroll-up 12)))
 
 ;; Navigation
 ;(keymap-set evil-normal-state-map "M-j" 'evil-window-next) ;; It's good but never use
@@ -70,18 +70,20 @@
 ;; Faster movement
 (keymap-set evil-normal-state-map "M-j" (lambda() (interactive) (evil-next-line 12)))
 (keymap-set evil-normal-state-map "M-k" (lambda() (interactive) (evil-previous-line 12)))
+(keymap-set evil-normal-state-map "M-h" 'evil-backward-WORD-begin)
+(keymap-set evil-normal-state-map "M-l" 'evil-forward-WORD-end)
 
 ;; Change Tab normal mode
-(define-key evil-normal-state-map (kbd "C-l") 'tab-next)
-(define-key evil-normal-state-map (kbd "C-h") 'tab-previous)
+(keymap-set evil-normal-state-map "C-l" 'tab-next)
+(keymap-set evil-normal-state-map "C-h" 'tab-previous)
 
 ;; Tabs
-(define-key evil-normal-state-map (kbd "SPC t c") 'tab-new)
-(define-key evil-normal-state-map (kbd "SPC t q") 'tab-close)
-(define-key evil-normal-state-map (kbd "SPC t o") 'tab-close-other)
-(define-key evil-normal-state-map (kbd "SPC t u") 'tab-undo)
-(define-key evil-normal-state-map (kbd "SPC t l") 'tab-move)
-(define-key evil-normal-state-map (kbd "SPC t h") (lambda() (interactive) (tab-move -1)))
+(keymap-set evil-normal-state-map "SPC t c" 'tab-new)
+(keymap-set evil-normal-state-map "SPC t q" 'tab-close)
+(keymap-set evil-normal-state-map "SPC t o" 'tab-close-other)
+(keymap-set evil-normal-state-map "SPC t u" 'tab-undo)
+(keymap-set evil-normal-state-map "SPC t l" 'tab-move)
+(keymap-set evil-normal-state-map "SPC t h" (lambda() (interactive) (tab-move -1)))
 
 ;; Tabs by Number
 (keymap-set evil-normal-state-map "M-1" (lambda() (interactive) (tab-select 1)))
@@ -95,18 +97,30 @@
 (keymap-set evil-normal-state-map "M-9" (lambda() (interactive) (tab-select 9)))
 (keymap-set evil-normal-state-map "M-0" (lambda() (interactive) (tab-select 0)))
 
+;; Tabs by Number (with g)
+(keymap-set evil-normal-state-map "g 1" (lambda() (interactive) (tab-select 1)))
+(keymap-set evil-normal-state-map "g 2" (lambda() (interactive) (tab-select 2)))
+(keymap-set evil-normal-state-map "g 3" (lambda() (interactive) (tab-select 3)))
+(keymap-set evil-normal-state-map "g 4" (lambda() (interactive) (tab-select 4)))
+(keymap-set evil-normal-state-map "g 5" (lambda() (interactive) (tab-select 5)))
+(keymap-set evil-normal-state-map "g 6" (lambda() (interactive) (tab-select 6)))
+(keymap-set evil-normal-state-map "g 7" (lambda() (interactive) (tab-select 7)))
+(keymap-set evil-normal-state-map "g 8" (lambda() (interactive) (tab-select 8)))
+(keymap-set evil-normal-state-map "g 9" (lambda() (interactive) (tab-select 9)))
+(keymap-set evil-normal-state-map "g 0" (lambda() (interactive) (tab-select 0)))
+
 ;; Windows
 (keymap-set evil-normal-state-map "C-w n" 'evil-window-vnew)
+(keymap-set evil-normal-state-map "M-<left>"  'evil-window-decrease-width)
+(keymap-set evil-normal-state-map "M-<right>" 'evil-window-increase-width)
+(keymap-set evil-normal-state-map "M-<up>"    'evil-window-increase-height)
+(keymap-set evil-normal-state-map "M-<down>"  'evil-window-decrease-height)
 
 ;; Utils ############################################################################################
-
-;; Completion
-;(keymap-set evil-insert-state-map "C-j" 'completion-at-point)
 
 ;; Buffers
 (keymap-set evil-normal-state-map "SPC b b" 'ibuffer)
 (keymap-set evil-normal-state-map "SPC b s" 'switch-to-buffer)
-;(keymap-set evil-normal-state-map "SPC b s" 'consult-buffer) ;; Can load stuff just to show preview
 (keymap-set evil-normal-state-map "SPC b n" 'next-buffer)
 (keymap-set evil-normal-state-map "SPC b p" 'previous-buffer)
 (keymap-set evil-normal-state-map "SPC b d" 'kill-this-buffer)
@@ -134,10 +148,10 @@
 (keymap-set evil-normal-state-map "M-;" 'shell-command)
 
 ;; Find File
-(define-key evil-normal-state-map (kbd "C-q") 'project-find-file)
+(keymap-set evil-normal-state-map "C-q" 'project-find-file)
 
 ;; Close all windows and tabs but the focused one
-(define-key evil-normal-state-map (kbd "SPC w o")
+(keymap-set evil-normal-state-map "SPC w o"
             (lambda()
               (interactive)
               (delete-other-windows)
@@ -147,8 +161,8 @@
 (define-key evil-normal-state-map (kbd "SPC w t") (kbd "C-w T"))
 
 ;; Eval
-(define-key evil-normal-state-map (kbd "SPC h b e") 'eval-buffer)
-(define-key evil-normal-state-map (kbd "SPC h e e") 'eval-last-sexp)
+(keymap-set evil-normal-state-map "SPC h b e" 'eval-buffer)
+(keymap-set evil-normal-state-map "SPC h e e" 'eval-last-sexp)
 
 ;; Better use of Cursor Jump Keys
 (keymap-set evil-normal-state-map "H" 'evil-first-non-blank)
