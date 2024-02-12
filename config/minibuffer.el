@@ -15,6 +15,7 @@
 (require 'vertico)
 
 (keymap-set vertico-map "C-f" 'vertico-exit)
+;; (keymap-set vertico-map "C-i" 'vertico-insert)
 
 ;; Defaults if vertico is not working
 (keymap-set vertico-map "M-TAB" #'minibuffer-complete)
@@ -27,6 +28,8 @@
 
 (with-eval-after-load 'vertico
   (marginalia-mode))
+
+(setq marginalia-align 'left)
 
 ;; Orderless ########################################################################################
 

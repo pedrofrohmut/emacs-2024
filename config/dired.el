@@ -1,5 +1,9 @@
 ;; Dired ####################################################################################
 
+(require 'dired)
+
+(keymap-unset dired-mode-map "SPC")
+
 (evil-define-key 'normal dired-mode-map (kbd "SPC") nil)
 
 ;; Global mapping

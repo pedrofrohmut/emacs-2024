@@ -31,7 +31,7 @@
 (setq evil-normal-state-cursor   '("yellow" box)
       evil-insert-state-cursor   '("white"  bar)
       evil-visual-state-cursor   '("red"    box)
-      evil-replace-state-cursor  '("green"  bar)
+      evil-replace-state-cursor  '("red"    box)
       evil-operator-state-cursor '("white"  bar))
 
 (require 'evil)
