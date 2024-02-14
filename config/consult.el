@@ -5,6 +5,7 @@
 
 (keymap-set evil-normal-state-map "C-f" 'consult-line)
 (keymap-set evil-normal-state-map "M-f" 'consult-line-multi)
+(keymap-set evil-normal-state-map "M-p" 'consult-yank-from-kill-ring)
 
 (keymap-set evil-normal-state-map "SPC f g" 'consult-ripgrep)
 (keymap-set evil-normal-state-map "SPC f f" 'consult-fd)

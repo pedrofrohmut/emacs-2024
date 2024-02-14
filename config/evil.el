@@ -64,12 +64,13 @@
 (keymap-set evil-normal-state-map "C-k" (lambda () (interactive) (evil-scroll-up 12)))
 
 ;; Navigation
-;(keymap-set evil-normal-state-map "M-j" 'evil-window-next) ;; It's good but never use
 (keymap-set evil-normal-state-map "M-m" 'tab-recent)
 
 ;; Faster movement
 (keymap-set evil-normal-state-map "M-j" (lambda() (interactive) (evil-next-line 12)))
 (keymap-set evil-normal-state-map "M-k" (lambda() (interactive) (evil-previous-line 12)))
+(keymap-set evil-visual-state-map "M-j" (lambda() (interactive) (evil-next-line 12)))
+(keymap-set evil-visual-state-map "M-k" (lambda() (interactive) (evil-previous-line 12)))
 (keymap-set evil-normal-state-map "M-h" 'evil-backward-WORD-begin)
 (keymap-set evil-normal-state-map "M-l" 'evil-forward-WORD-end)
 
@@ -132,6 +133,9 @@
 
 ;; Toggle wrap lines
 (keymap-set evil-normal-state-map "SPC h l" 'global-visual-line-mode)
+
+;; Set wombat theme (in case of error)
+(keymap-set evil-normal-state-map "SPC h t" (lambda() (interactive) (load-theme 'wombat t)))
 
 ;; Toggle whitespace
 (keymap-set evil-normal-state-map "SPC h w" 'global-whitespace-mode)
@@ -209,6 +213,8 @@
 (unless (package-installed-p 'evil-surround)
   (package-install 'evil-surround))
 
+(keymap-set evil-visual-state-map "s" 'evil-surround-region)
+
 (with-eval-after-load 'evil
   (require 'evil-surround)
   (global-evil-surround-mode t))
@@ -247,3 +253,7 @@
 (custom-set-faces
  '(evil-goggles-default-face
    ((t (:background "#f00" :foreground "#fff")))))
+
+;; (set-face-attribute 'evil-goggles-default-face nil
+;;                     :foreground "#fff"
+;;                     :background "#f00")

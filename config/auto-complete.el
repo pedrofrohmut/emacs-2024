@@ -1,5 +1,7 @@
 ;; Auto-Complete ####################################################################################
 
+;; Corfu #######################################################################
+
 ;; Manual completion example (Does not show automatically)
 
 (unless (package-installed-p 'corfu)
@@ -14,3 +16,15 @@
 (evil-define-key 'insert corfu-map (kbd "SPC") 'corfu-insert-separator)
 
 (global-corfu-mode)
+
+;; Cape ########################################################################
+
+(unless (package-installed-p 'cape)
+  (package-install 'cape))
+
+(add-to-list 'completion-at-point-functions #'cape-dabbrev)
+(add-to-list 'completion-at-point-functions #'cape-file)
+
+(require 'cape)
+
+(keymap-set evil-insert-state-map "C-f" 'cape-file)

@@ -74,6 +74,12 @@
 (set-face-attribute 'fixed-pitch nil
                     :family "Fira Code" :height 120 :weight 'regular)
 
+;; NativeComp - Silence compiler warnings
+(setq native-comp-async-report-warnings-errors nil)
+
+;; NativeComp - Set the directory to store cache
+(add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
+
 ;; Unset Keybinds ###################################################################################
 
 (global-unset-key (kbd "C-h"))  ;; Can still use help with F1
@@ -107,14 +113,20 @@
 ;; Witchkey
 (load "~/.config/emacs/config/which-key.el")
 
-;; Avy (Jumping)
-(load "~/.config/emacs/config/avy.el")
+;; Navigation (Jumping)
+(load "~/.config/emacs/config/navigation.el")
 
 ;; Dired
 (load "~/.config/emacs/config/dired.el")
 
+;; Project
+(load "~/.config/emacs/config/projects.el")
+
 ;; Languages
 (load "~/.config/emacs/config/languages.el")
+
+;; Eglot LSP
+(load "~/.config/emacs/config/lsp.el")
 
 ;; Markdown
 (load "~/.config/emacs/config/markdown.el")
@@ -138,6 +150,9 @@
 
 ;; Easy change emacs current directory
 (keymap-global-set "C-c C-d" 'cd)
+
+;; Better M-x
+(keymap-global-set "M-SPC" 'execute-extended-command)
 
 ;; Startup Function #############################################################
 

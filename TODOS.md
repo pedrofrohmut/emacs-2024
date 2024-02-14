@@ -1,8 +1,8 @@
 # TODOS
 
-EXTRA. [ ] Vertico (Vertico, Orderless, Marginalia, Consult, Embark) and Corfu
+EXTRA. [X] Vertico (Vertico, Orderless, Marginalia, Consult, Embark) and Corfu
 
-1. [ ] auto-complete tool like company
+1. [X] auto-complete tool like company
 2. [ ] configure eglot to have the same keybind that I have in neovim
 3. [ ] formatter to use prettier
 4. [ ] linter like flycheck
@@ -26,8 +26,6 @@ EXTRA. [ ] Vertico (Vertico, Orderless, Marginalia, Consult, Embark) and Corfu
 ; X   3.1 https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
 ; X   3.2 https://github.com/mickeynp/ligature.el
 
-; 4. Jumping with avy, vim-easy-motion, or vim-sneaky
-
 ; 5. Minibuffer stuff like ivy, vertico, helm, etc
 
 ; 6. Add Wilfred/helpful and make relative remaps
@@ -39,10 +37,6 @@ EXTRA. [ ] Vertico (Vertico, Orderless, Marginalia, Consult, Embark) and Corfu
 ; 9. See Blink Search (former Snails) as an alternative to Telescope
 
 ; 10. Check aggressive-indent-mode for better indentation
-
-; 11. Check tslilc/siege-mode surrounder
-
-; 12. Check magnars/expand-region.el smart select text (let the computer do it)
 
 ; 13. Add undo tree support
 

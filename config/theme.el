@@ -70,7 +70,7 @@
 
 ;; Override the theme colors
 (setq modus-themes-vivendi-color-overrides
-      '((bg-main . "#1a1b26"))) ;; Tokyo Night Background
+      '((bg-main . "#1a1b26")))
 
 ;; My Custom Colors #################################################################################
 
@@ -86,18 +86,21 @@
 ;; Strings
 (set-face-foreground 'font-lock-string-face my-light-orange)
 
-;; TODO: Remove border from tabs
 ;; Tabs
 (set-face-attribute 'tab-bar nil
-                    :foreground "#666" :background "#000")
+                    :foreground "#666" :background "#000" :inherit nil)
 
 ;; Active Tab
 (set-face-attribute 'tab-bar-tab nil
-                    :foreground "#0ff" :background "#224444")
+                    :foreground "#0ff" :background "#224444" :inherit nil)
 
 ;; Inactive Tab
 (set-face-attribute 'tab-bar-tab-inactive nil
-                    :foreground "#666" :background "#000")
+                    :foreground "#ccc" :background "#222" :inherit nil)
+
+;; Fringe
+;; (set-face-attribute 'fringe nil
+;;                     :foreground "#fff" :background bg-active)
 
 ;; Loads Modus Theme
 (load-theme 'modus-vivendi :no-confirm)
