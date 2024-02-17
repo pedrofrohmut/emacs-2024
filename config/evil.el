@@ -20,7 +20,7 @@
 
 ;; Cursor movement
 (setq evil-move-beyond-eol nil)
-(setq evil-cross-lines nil)
+(setq evil-cross-lines t)
 
 ;; Indentation
 (setq evil-auto-indent t)
@@ -38,6 +38,9 @@
 (add-hook 'after-init-hook 'evil-mode)
 
 ;; Evil Keymaps ###############################################################################
+
+;; Leader Key Mapping
+(evil-global-set-key 'normal (kbd "SPC") nil)
 
 ;; Unsets
 (keymap-unset evil-normal-state-map "C-p")
@@ -66,13 +69,14 @@
 ;; Navigation
 (keymap-set evil-normal-state-map "M-m" 'tab-recent)
 
-;; Faster movement
-(keymap-set evil-normal-state-map "M-j" (lambda() (interactive) (evil-next-line 12)))
-(keymap-set evil-normal-state-map "M-k" (lambda() (interactive) (evil-previous-line 12)))
-(keymap-set evil-visual-state-map "M-j" (lambda() (interactive) (evil-next-line 12)))
-(keymap-set evil-visual-state-map "M-k" (lambda() (interactive) (evil-previous-line 12)))
-(keymap-set evil-normal-state-map "M-h" 'evil-backward-WORD-begin)
-(keymap-set evil-normal-state-map "M-l" 'evil-forward-WORD-end)
+;; Faster movement (Not good yet. Review it later)
+;(keymap-set evil-normal-state-map "M-j" (lambda() (interactive) (evil-next-line 12)))
+;(keymap-set evil-normal-state-map "M-k" (lambda() (interactive) (evil-previous-line 12)))
+;(keymap-set evil-normal-state-map "M-h" 'evil-backward-WORD-begin)
+;(keymap-set evil-normal-state-map "M-l" 'evil-forward-WORD-end)
+
+;; Faster Select
+(keymap-set evil-visual-state-map "v" 'evil-jump-item)
 
 ;; Change Tab normal mode
 (keymap-set evil-normal-state-map "C-l" 'tab-next)
@@ -116,6 +120,10 @@
 (keymap-set evil-normal-state-map "M-<right>" 'evil-window-increase-width)
 (keymap-set evil-normal-state-map "M-<up>"    'evil-window-increase-height)
 (keymap-set evil-normal-state-map "M-<down>"  'evil-window-decrease-height)
+(keymap-set evil-normal-state-map "SPC w h" 'evil-window-move-far-left)
+(keymap-set evil-normal-state-map "SPC w j" 'evil-window-move-very-bottom)
+(keymap-set evil-normal-state-map "SPC w k" 'evil-window-move-very-top)
+(keymap-set evil-normal-state-map "SPC w l" 'evil-window-move-far-right)
 
 ;; Utils ############################################################################################
 
@@ -130,6 +138,9 @@
 (keymap-set evil-normal-state-map "SPC h f" 'describe-function)
 (keymap-set evil-normal-state-map "SPC h v" 'describe-variable)
 (keymap-set evil-normal-state-map "SPC h k" 'describe-key)
+
+;; Restart Emacs
+(keymap-set evil-normal-state-map "SPC h r r" 'restart-emacs)
 
 ;; Toggle wrap lines
 (keymap-set evil-normal-state-map "SPC h l" 'global-visual-line-mode)
@@ -152,7 +163,7 @@
 (keymap-set evil-normal-state-map "M-;" 'shell-command)
 
 ;; Find File
-(keymap-set evil-normal-state-map "C-q" 'project-find-file)
+;(keymap-set evil-normal-state-map "C-q" 'project-find-file)
 
 ;; Close all windows and tabs but the focused one
 (keymap-set evil-normal-state-map "SPC w o"
@@ -185,10 +196,10 @@
 (keymap-set evil-visual-state-map "SPC s q" 'query-replace-regexp)
 
 ;; Move on insert mode for japanese typing (Vim users lol)
-(keymap-set evil-insert-state-map "M-h" 'left-char)
-(keymap-set evil-insert-state-map "M-j" 'next-line)
-(keymap-set evil-insert-state-map "M-k" 'previous-line)
-(keymap-set evil-insert-state-map "M-l" 'right-char)
+;(keymap-set evil-insert-state-map "M-h" 'left-char)
+;(keymap-set evil-insert-state-map "M-j" 'next-line)
+;(keymap-set evil-insert-state-map "M-k" 'previous-line)
+;(keymap-set evil-insert-state-map "M-l" 'right-char)
 
 ;; Extra Evil Packages #############################################################
 
@@ -250,10 +261,11 @@
   (require 'evil-goggles)
   (evil-goggles-mode))
 
-(custom-set-faces
- '(evil-goggles-default-face
-   ((t (:background "#f00" :foreground "#fff")))))
+;; (custom-set-faces
+;;  '(evil-goggles-default-face
+;;    ((t (:background "#f00" :foreground "#fff")))))
 
-;; (set-face-attribute 'evil-goggles-default-face nil
-;;                     :foreground "#fff"
-;;                     :background "#f00")
+(set-face-attribute 'evil-goggles-default-face nil
+                    :foreground "#fff"
+                    :background "#f00"
+                    :inherit nil)

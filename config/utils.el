@@ -1,4 +1,4 @@
-;; Fill Column ##################################################################
+;; Fill Column #################################################################
 
 (unless (package-installed-p 'visual-fill-column)
   (package-install 'visual-fill-column))
@@ -7,11 +7,12 @@
 
 (add-hook 'after-init-hook 'global-visual-fill-column-mode)
 
-(keymap-set evil-normal-state-map "SPC z z" 'global-visual-fill-column-mode)
+(with-eval-after-load 'evil
+  (keymap-set evil-normal-state-map "SPC z z" 'global-visual-fill-column-mode))
 
-;; Restart Emacs ################################################################
+;; Editor config ###############################################################
 
-(unless (package-installed-p 'restart-emacs)
-  (package-install 'restart-emacs))
+(unless (package-installed-p 'editorconfig)
+  (package-install 'editorconfig))
 
-(keymap-set evil-normal-state-map "SPC h r r" 'restart-emacs)
+(editorconfig-mode)

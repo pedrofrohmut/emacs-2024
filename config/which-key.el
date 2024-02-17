@@ -1,3 +1,5 @@
+;; Which-Key ####################################################################
+
 (unless (package-installed-p 'which-key)
   (package-install 'which-key))
 

@@ -10,16 +10,16 @@
 (setq inhibit-startup-message t)
 
 ;; Insert spaces  instead of tabs (no \t)
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
+(setq tab-width 4)
+(setq indent-tabs-mode nil)
 ;(setq indent-line-function 'insert-tab)
 
 ;; Tab only indent on the correct position
-;; (setq-default tab-always-indent nil)
+(setq tab-always-indent nil)
 
 ;; Line Numbers (If I ever want it back is here)
-;(global-display-line-numbers-mode t)
-;(setq-default display-line-numbers-type 'relative)
+(global-display-line-numbers-mode t)
+(setq-default display-line-numbers-type 'relative)
 
 ;; Insert closing character like ) } ]
 (electric-pair-mode t)
@@ -33,6 +33,9 @@
 
 ;; Saves your location in files for the next time you open it
 (save-place-mode t)
+
+;; Keep a Recent File List
+(recentf-mode t)
 
 ;; Files
 (setq make-backup-files nil)
@@ -58,6 +61,12 @@
 
 ;; Set no wrap lines
 (set-default 'truncate-lines t)
+
+;; Tabs
+(setq tab-bar-new-tab-choice "*scratch*")
+(setq tab-bar-new-tab-to 'rightmost)
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-new-button-show nil)
 
 ;; Set root dir for project.el
 (setq project-vc-extra-root-markers '(".project.el" ".projectile" ))
@@ -108,16 +117,19 @@
 (load "~/.config/emacs/config/snippets.el")
 
 ;; Tabs
-(load "~/.config/emacs/config/tabs.el")
+;(load "~/.config/emacs/config/tabs.el")
 
 ;; Witchkey
-(load "~/.config/emacs/config/which-key.el")
+;(load "~/.config/emacs/config/which-key.el")
 
 ;; Navigation (Jumping)
 (load "~/.config/emacs/config/navigation.el")
 
 ;; Dired
 (load "~/.config/emacs/config/dired.el")
+
+;; File Tree
+;(load "~/.config/emacs/config/file-tree.el")
 
 ;; Project
 (load "~/.config/emacs/config/projects.el")
@@ -143,13 +155,16 @@
 ;; Copy and Paste
 (load "~/.config/emacs/config/copy-paste.el")
 
+;; Helpful
+(load "~/.config/emacs/config/helpful.el")
+
 ;; Keybinds #####################################################################
 
 ;; Make ESC quit prompts
 (keymap-global-set "<escape>" 'keyboard-escape-quit)
 
 ;; Easy change emacs current directory
-(keymap-global-set "C-c C-d" 'cd)
+(keymap-set evil-normal-state-map "C-c C-d" 'cd)
 
 ;; Better M-x
 (keymap-global-set "M-SPC" 'execute-extended-command)

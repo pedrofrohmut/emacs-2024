@@ -77,30 +77,50 @@
 (defvar my-dark-gray-blue "#38a")
 (defvar my-light-orange "#f93")
 
-;; Custom colors
-(set-face-foreground 'line-number "#a3a3a3")           ;; Light Gray
+(defvar my-active-bg "#233")
+(defvar my-active-fg "#0ff")
+(defvar my-active-fg-dimmed "#0aa")
+
+(defvar my-inactive-bg "#222")
+(defvar my-inactive-fg "#888")
+(defvar my-inactive-fg-dimmed "#666")
+(defvar my-inactive-fg-accented "#ccc")
 
 ;; Comments
-(set-face-attribute 'font-lock-comment-face nil :foreground my-dark-gray-blue)
+(set-face-foreground 'font-lock-comment-face my-dark-gray-blue)
 
 ;; Strings
 (set-face-foreground 'font-lock-string-face my-light-orange)
 
 ;; Tabs
 (set-face-attribute 'tab-bar nil
-                    :foreground "#666" :background "#000" :inherit nil)
+                    :foreground my-inactive-fg-dimmed
+                    :background tokyo-night-bg
+                    :inherit nil)
 
 ;; Active Tab
 (set-face-attribute 'tab-bar-tab nil
-                    :foreground "#0ff" :background "#224444" :inherit nil)
+                    :foreground my-active-fg-dimmed
+                    :background my-active-bg
+                    :inherit nil)
 
 ;; Inactive Tab
 (set-face-attribute 'tab-bar-tab-inactive nil
-                    :foreground "#ccc" :background "#222" :inherit nil)
+                    :foreground my-inactive-fg-accented
+                    :background my-inactive-bg
+                    :inherit nil)
 
-;; Fringe
-;; (set-face-attribute 'fringe nil
-;;                     :foreground "#fff" :background bg-active)
+;; Line numbers
+(set-face-attribute 'line-number nil
+                    :foreground my-inactive-fg
+                    :background tokyo-night-bg
+                    :inherit nil)
+
+;; Current line number
+(set-face-attribute 'line-number-current-line nil
+                    :foreground my-active-fg-dimmed
+                    :background my-active-bg
+                    :inherit nil)
 
 ;; Loads Modus Theme
 (load-theme 'modus-vivendi :no-confirm)

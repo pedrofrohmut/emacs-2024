@@ -1,44 +1,71 @@
 ;; Language Support #####################################################################
 
-;; Tree Sitter
-(unless (package-installed-p 'tree-sitter)
-  (package-install 'tree-sitter))
-(require 'tree-sitter)
+;;; Tree Sitter
+;(unless (package-installed-p 'tree-sitter)
+;  (package-install 'tree-sitter))
+;(require 'tree-sitter)
+;
+;;; Tree Sitter Langs
+;(unless (package-installed-p 'tree-sitter-langs)
+;  (package-install 'tree-sitter-langs))
+;(with-eval-after-load 'tree-sitter
+;  (require 'tree-sitter-langs))
+;
+;;(global-tree-sitter-mode)
+;
+;;(add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
+;
+;;; (setq tree-sitter-load-path '("/home/pedro/.config/emacs/elpa/tree-sitter-langs-20240212.1005/bin/"))
+;
+;;; (tree-sitter-require 'javascript)
+;;; (tree-sitter-require 'typescript)
+;;; (tree-sitter-require 'tsx)
+;
+;;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
+;;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-tsx-mode))
+;
+;(unless (package-installed-p 'treesit-auto)
+;  (package-install 'treesit-auto))
+;(require 'treesit-auto)
+;
+;(setq treesit-auto-install 'prompt)
+;
+;(treesit-auto-add-to-auto-mode-alist 'all)
 
-;; Tree Sitter Langs
-(unless (package-installed-p 'tree-sitter-langs)
-  (package-install 'tree-sitter-langs))
-(with-eval-after-load 'tree-sitter
-  (require 'tree-sitter-langs))
+;(global-treesit-auto-mode)
 
-(global-tree-sitter-mode)
+;; HTML ########################################################################
+(setq-default sgml-basic-offset 2)
 
-(add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
+;; Javascript ##################################################################
+(add-to-list 'auto-mode-alist '("\\.cjs\\'" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-mode))
+(setq-default js-indent-level 4)
 
-;; (setq tree-sitter-load-path '("/home/pedro/.config/emacs/elpa/tree-sitter-langs-20240212.1005/bin/"))
-
-;; (tree-sitter-require 'javascript)
-;; (tree-sitter-require 'typescript)
-;; (tree-sitter-require 'tsx)
-
-;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
-;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-tsx-mode))
-
-(unless (package-installed-p 'treesit-auto)
-  (package-install 'treesit-auto))
-(require 'treesit-auto)
-
-(setq treesit-auto-install 'prompt)
-
-(treesit-auto-add-to-auto-mode-alist 'all)
-
-(global-treesit-auto-mode)
-
-;; Typescript
+;; Typescript ##################################################################
 (setq-default typescript-ts-mode-indent-offset 4)
 
-;; JSON
+;; JSON ########################################################################
 (setq-default json-ts-mode-indent-offset 4)
 
-;; C/C++
-(setq-default c-basic-offset 4)
+;; React #######################################################################
+;; (unless (package-installed-p 'rjsx-mode)
+;;   (package-install 'rjsx-mode))
+
+;; (with-eval-after-load 'rjsx-mode
+;;   (define-key rjsx-mode-map "<" nil)
+;;   (define-key rjsx-mode-map (kbd "C-d") nil)
+;;   (define-key rjsx-mode-map ">" nil))
+
+;; (setq js2-strict-missing-semi-warning nil)
+
+;; C/C++ #######################################################################
+;(setq-default c-basic-offset 4)
+(setq c-basic-offset 4)
+(setq c-hanging-braces-alist '(substatement-open . (after)))
+
+; Set offset for opening brace of substatement (e.g., function definition) to 0
+;(setq c-offsets-alist '((substatement-open . 0)))
+
+;; Yaml ########################################################################
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-ts-mode))
