@@ -113,8 +113,8 @@
 ;; Utils: Visual Fill Column, Restart Emacs
 (load "~/.config/emacs/config/utils.el")
 
-;; Snippets
-(load "~/.config/emacs/config/snippets.el")
+;; Emmet
+(load "~/.config/emacs/config/emmet.el")
 
 ;; Tabs
 ;(load "~/.config/emacs/config/tabs.el")
@@ -158,6 +158,9 @@
 ;; Helpful
 (load "~/.config/emacs/config/helpful.el")
 
+;; Git support
+(load "~/.config/emacs/config/git-support.el")
+
 ;; Keybinds #####################################################################
 
 ;; Make ESC quit prompts
@@ -168,6 +171,9 @@
 
 ;; Better M-x
 (keymap-global-set "M-SPC" 'execute-extended-command)
+
+;; Alt tab inside Emacs
+(keymap-set evil-normal-state-map "C-M-i" 'tab-recent)
 
 ;; Startup Function #############################################################
 

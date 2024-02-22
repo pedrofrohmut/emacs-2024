@@ -10,6 +10,17 @@ EXTRA. [X] Vertico (Vertico, Orderless, Marginalia, Consult, Embark) and Corfu
 6. [ ] tree file explorer
 7. [ ] file symbol tree (like ctags)
 
+8. Irony Mode (C/C++ minor mode powered by libclang)
+
+9. Make with abbrev: --foo to  var(--foo) for CSS files
+
+10. Have a look at perspective.el for having multiple projects opened in Emacs but
+each one has its own list of buffers and so on
+	10.1 - Other packages that complement it are: perps-mode, winun
+
+11. Pop Up Mode: chage windows into buffers so them can be toggled, hidden without
+disturbing the layout and opened windows
+
 <!--
 ;; TODOS #############################################################################################
 

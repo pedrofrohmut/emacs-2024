@@ -15,7 +15,11 @@
                '(js-ts-mode . ("typescript-language-server" "--stdio"))))
 
 ;; (add-hook 'eglot-managed-mode-hook
-;;           (lambda() (keymap-local-set "K" 'eldoc-box-help-at-point)))
+;;           (lambda() (keymap-local-set "SPC r n" 'eglot-rename)))
+
+(add-hook 'eglot-managed-mode-hook
+	  (lambda()
+	    (keymap-set evil-normal-state-map "SPC r n" 'eglot-rename)))
 
 ;; Eldoc ######################################################################
 

@@ -28,3 +28,26 @@
 (require 'cape)
 
 (keymap-set evil-insert-state-map "C-f" 'cape-file)
+
+;; Cape control completion table refreshes
+(advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
+
+;; Making a Cape Super Capf for Eglot
+(defun my/eglot-capf ()
+  (setq-local completion-at-point-functions
+              (list (cape-capf-super
+                     #'eglot-completion-at-point
+                     #'cape-dabbrev
+                     #'cape-file))))
+
+(add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
+ 
+;; Prescient.el #################################################################
+
+(unless (package-installed-p 'prescient)
+  (package-install 'prescient))
+
+(unless (package-installed-p 'corfu-prescient)
+  (package-install 'corfu-prescient))
+
+(corfu-prescient-mode 1)

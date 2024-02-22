@@ -16,3 +16,10 @@
   (package-install 'editorconfig))
 
 (editorconfig-mode)
+
+;; Undo Tree ###################################################################
+
+;(unless (package-installed-p 'undo-tree)
+;  (package-install 'undo-tree))
+;
+;(global-undo-tree-mode)

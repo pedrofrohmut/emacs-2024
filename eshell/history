@@ -1,0 +1,5 @@
+consult-grep-args
+consult-grep-args hello
+consult-grep "evil"
+consult-grep "evil" **.el
+exit

@@ -47,6 +47,10 @@
 (keymap-unset evil-normal-state-map "C-n")
 (keymap-unset evil-normal-state-map "s")
 (keymap-unset evil-normal-state-map "S")
+(keymap-unset evil-normal-state-map "q")
+
+;; Macro in a key you just wont type for accident
+(keymap-set evil-normal-state-map "M-q" 'evil-record-macro)
 
 ;; Redo
 (keymap-set evil-normal-state-map "U" 'evil-redo)
@@ -156,14 +160,24 @@
 (keymap-set evil-normal-state-map "C-=" 'text-scale-increase)
 (keymap-set evil-normal-state-map "C--" 'text-scale-decrease)
 
-;; Config
-(keymap-set evil-normal-state-map "SPC f c" (lambda() (interactive) (find-file "~/.config/emacs/init.el")))
+(defun my/find-file-home ()
+  (interactive)
+  (let ((default-directory (expand-file-name "~/")))
+    (call-interactively #'find-file)))
+
+;; Find my home
+(keymap-set evil-normal-state-map "SPC f h" #'my/find-file-home)
+
+;; Config (find my config)
+(keymap-set evil-normal-state-map "SPC f m c"
+	    (lambda() (interactive) (find-file "~/.config/emacs/init.el")))
+
+;; Dotfiles
+(keymap-set evil-normal-state-map "SPC f m d"
+	    (lambda() (interactive) (find-file "~/dotfiles/")))
 
 ;; Shell Command
 (keymap-set evil-normal-state-map "M-;" 'shell-command)
-
-;; Find File
-;(keymap-set evil-normal-state-map "C-q" 'project-find-file)
 
 ;; Close all windows and tabs but the focused one
 (keymap-set evil-normal-state-map "SPC w o"
@@ -194,6 +208,10 @@
 (keymap-set evil-visual-state-map "SPC s s" 'replace-regexp)
 (keymap-set evil-normal-state-map "SPC s q" 'query-replace-regexp)
 (keymap-set evil-visual-state-map "SPC s q" 'query-replace-regexp)
+
+;; Format on visual
+(keymap-set evil-normal-state-map "SPC SPC" 'evil-indent)
+(keymap-set evil-visual-state-map "SPC SPC" 'evil-indent)
 
 ;; Move on insert mode for japanese typing (Vim users lol)
 ;(keymap-set evil-insert-state-map "M-h" 'left-char)

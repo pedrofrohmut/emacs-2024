@@ -21,6 +21,15 @@
 (keymap-set vertico-map "M-TAB" #'minibuffer-complete)
 (keymap-set vertico-map "M-RET" #'minibuffer-force-complete-and-exit)
 
+
+;; Del and backspace in vertico
+(keymap-set vertico-map "C-h" #'delete-backward-char)
+(keymap-set vertico-map "C-l" #'delete-char)
+
+;; Easy move in vertico
+(keymap-set vertico-map "M-h" #'backward-char)
+(keymap-set vertico-map "M-l" #'forward-char)
+
 ;; Marginalia #######################################################################################
 
 (unless (package-installed-p 'marginalia)
