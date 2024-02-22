@@ -116,6 +116,9 @@
 ;; Emmet
 (load "~/.config/emacs/config/emmet.el")
 
+;; Snippets
+(load "~/.config/emacs/config/snippets.el")
+
 ;; Tabs
 ;(load "~/.config/emacs/config/tabs.el")
 

@@ -49,7 +49,11 @@
 (keymap-unset evil-normal-state-map "S")
 (keymap-unset evil-normal-state-map "q")
 
-;; Macro in a key you just wont type for accident
+;; Move Up/down on wrap text (more repeatable than g j and g k)
+(keymap-set evil-normal-state-map "M-j" 'evil-next-visual-line)
+(keymap-set evil-normal-state-map "M-k" 'evil-previous-visual-line)
+
+;; macro in a key you just wont type for accident
 (keymap-set evil-normal-state-map "M-q" 'evil-record-macro)
 
 ;; Redo
