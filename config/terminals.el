@@ -18,6 +18,9 @@
 
 (keymap-set evil-normal-state-map "SPC x x" #'open-vterm-at-project-root)
 
+(evil-define-key 'normal vterm-mode-map (kbd "C-p") 'vterm-send-up)
+(evil-define-key 'normal vterm-mode-map (kbd "C-n") 'vterm-send-down)
+
 ;; Multi Vterm ######################################################################################
 
 (unless (package-installed-p 'multi-vterm)
@@ -42,3 +45,4 @@
 
 ;; Toggle split window dedicated term
 (keymap-set evil-normal-state-map "SPC x t" #'open-dedicated-at-project-root)
+(keymap-set evil-normal-state-map "C-`" #'open-dedicated-at-project-root)

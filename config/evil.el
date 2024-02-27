@@ -20,7 +20,7 @@
 
 ;; Cursor movement
 (setq evil-move-beyond-eol nil)
-(setq evil-cross-lines t)
+(setq evil-cross-lines nil)
 
 ;; Indentation
 (setq evil-auto-indent t)
@@ -68,11 +68,12 @@
 ;; Ctrl-l as delete
 (keymap-set evil-insert-state-map "C-l" 'evil-delete-char)
 
-;; Scroll down
+;; Scroll up/down
 (keymap-set evil-normal-state-map "C-j" (lambda () (interactive) (evil-scroll-down 12)))
-
-;; Scroll up
 (keymap-set evil-normal-state-map "C-k" (lambda () (interactive) (evil-scroll-up 12)))
+
+(keymap-set evil-normal-state-map "M-l" 'evil-scroll-column-right)
+(keymap-set evil-normal-state-map "M-h" 'evil-scroll-column-left)
 
 ;; Navigation
 (keymap-set evil-normal-state-map "M-m" 'tab-recent)
@@ -142,13 +143,13 @@
 (keymap-set evil-normal-state-map "SPC b p" 'previous-buffer)
 (keymap-set evil-normal-state-map "SPC b d" 'kill-this-buffer)
 
-;; Help
-(keymap-set evil-normal-state-map "SPC h f" 'describe-function)
-(keymap-set evil-normal-state-map "SPC h v" 'describe-variable)
-(keymap-set evil-normal-state-map "SPC h k" 'describe-key)
+;; ;; Help
+;; (keymap-set evil-normal-state-map "SPC h f" 'describe-function)
+;; (keymap-set evil-normal-state-map "SPC h v" 'describe-variable)
+;; (keymap-set evil-normal-state-map "SPC h k" 'describe-key)
 
 ;; Restart Emacs
-(keymap-set evil-normal-state-map "SPC h r r" 'restart-emacs)
+;(keymap-set evil-normal-state-map "SPC h r r" 'restart-emacs)
 
 ;; Toggle wrap lines
 (keymap-set evil-normal-state-map "SPC h l" 'global-visual-line-mode)
@@ -171,6 +172,15 @@
 
 ;; Find my home
 (keymap-set evil-normal-state-map "SPC f h" #'my/find-file-home)
+
+(defun my/fill-paragraph ()
+  "Fill paragraph with fill-column set to 100. Just to have a different and custom
+paragraph size that does not care of default fill-column value"
+  (interactive)
+  (let* ((fill-column 101))
+    (call-interactively #'evil-fill-and-move)))
+
+(keymap-set evil-normal-state-map "g q" #'my/fill-paragraph)
 
 ;; Config (find my config)
 (keymap-set evil-normal-state-map "SPC f m c"

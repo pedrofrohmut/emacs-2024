@@ -70,7 +70,8 @@
 
 ;; Override the theme colors
 (setq modus-themes-vivendi-color-overrides
-      '((bg-main . "#1a1b26")))
+      '((bg-main . "#1a1b26")
+	(fringe unspecified)))
 
 ;; My Custom Colors #################################################################################
 

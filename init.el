@@ -1,4 +1,5 @@
 ;; Set up package.el to work with MELPA
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("elpa" . "https://elpa.gnu.org/packages/"))
@@ -22,7 +23,7 @@
 (setq-default display-line-numbers-type 'relative)
 
 ;; Insert closing character like ) } ]
-(electric-pair-mode t)
+(setq electric-pair-mode nil)
 
 ;; Maching highlight
 (show-paren-mode t)
@@ -44,7 +45,7 @@
 ;; Fill Column (Ruler)
 (setq-default fill-column 121)
 (global-display-fill-column-indicator-mode t)
-(setq-default display-fill-column-indicator-column 101)
+(setq-default display-fill-column-indicator-column 81)
 
 ;; Show cursor position in statusbar
 (setq column-number-mode t)
@@ -58,6 +59,14 @@
 
 ;; Stop the beep
 (setq visible-bell t)
+
+;; Setup Scroll to disable jumping default behaviour
+(setq scroll-step 1)
+(setq scroll-conservatively 101)
+(setq scroll-margin 3)
+;(setq scroll-margin 99999)
+(setq hscroll-step 1)
+(setq hscroll-margin 3)
 
 ;; Set no wrap lines
 (set-default 'truncate-lines t)
@@ -76,12 +85,9 @@
 (load custom-file)
 
 ;; Fonts
-(set-face-attribute 'default nil
-                    :family "Fira Code" :height 120 :weight 'regular)
-(set-face-attribute 'variable-pitch nil
-                    :family "Fira Sans" :height 120 :weight 'regular)
-(set-face-attribute 'fixed-pitch nil
-                    :family "Fira Code" :height 120 :weight 'regular)
+(set-face-font 'default "Fira Code 12")
+(set-face-font 'variable-pitch "Fira Sans 12")
+(set-face-font 'fixed-pitch "Fira Code 12")
 
 ;; NativeComp - Silence compiler warnings
 (setq native-comp-async-report-warnings-errors nil)
@@ -178,6 +184,10 @@
 ;; Alt tab inside Emacs
 (keymap-set evil-normal-state-map "C-M-i" 'tab-recent)
 
+;; Compile my code
+(keymap-set evil-normal-state-map "SPC r c" 'project-compile)
+(keymap-set evil-normal-state-map "SPC r e" 'compile-goto-error)
+
 ;; Startup Function #############################################################
 
 (defun my/display-startup-time ()
@@ -187,8 +197,8 @@
                     (time-subtract after-init-time before-init-time)))
            gcs-done))
 
-(defun my/restore-gc-threshhold ()
-  (setq gc-cons-threshold (* 50 1000 1000))) ;; 50 Mega Bytes
+;; (defun my/restore-gc-threshhold ()
+;;   (setq gc-cons-threshold (* 50 1000 1000))) ;; 50 Mega Bytes
 
 ;; Hooks #########################################################################
 
