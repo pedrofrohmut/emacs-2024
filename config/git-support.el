@@ -13,6 +13,7 @@
 (set-face-foreground 'git-gutter-fr:added    "#0a0")
 (set-face-foreground 'git-gutter-fr:deleted  "#f00")
 
-;; (set-face-background 'git-gutter-fr:modified "#222")
-;; (set-face-background 'git-gutter-fr:added    "#222")
-;; (set-face-background 'git-gutter-fr:deleted  "#222")
+(defvar tokyo-night-bg "#1a1b26")
+(set-face-background 'git-gutter-fr:modified tokyo-night-bg)
+(set-face-background 'git-gutter-fr:added    tokyo-night-bg)
+(set-face-background 'git-gutter-fr:deleted  tokyo-night-bg)

@@ -70,12 +70,12 @@
 
 ;; Override the theme colors
 (setq modus-themes-vivendi-color-overrides
-      '((bg-main . "#1a1b26")
-	(fringe unspecified)))
+      '((bg-main . "#1a1b26")))
+	;; (fringe tokyo-night-bg)))
 
 ;; My Custom Colors #################################################################################
 
-(defvar my-dark-gray-blue "#38a")
+(defvar my-dark-gray-blue "#58a")
 (defvar my-light-orange "#f93")
 
 (defvar my-active-bg "#233")
@@ -122,6 +122,11 @@
                     :foreground my-active-fg-dimmed
                     :background my-active-bg
                     :inherit nil)
+
+(set-face-attribute 'fringe nil
+		    :foreground "#fff"
+		    :background tokyo-night-bg
+		    :inherit nil)
 
 ;; Loads Modus Theme
 (load-theme 'modus-vivendi :no-confirm)

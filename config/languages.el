@@ -41,6 +41,11 @@
 ;; HTML ########################################################################
 (setq-default sgml-basic-offset 2)
 
+;; (evil-define-key 'normal html-mode-map (kbd "M-b") 'sgml-skip-tag-backward)
+;; (evil-define-key 'normal html-mode-map (kbd "M-f") 'sgml-skip-tag-forward)
+;; (evil-define-key 'normal html-mode-map (kbd "C-c p") 'sgml-skip-tag-backward)
+;; (evil-define-key 'normal html-mode-map (kbd "C-c n") 'sgml-skip-tag-forward)
+
 ;; Javascript ##################################################################
 (add-to-list 'auto-mode-alist '("\\.cjs\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-mode))

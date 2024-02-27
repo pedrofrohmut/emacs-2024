@@ -76,7 +76,7 @@
 (keymap-set evil-normal-state-map "M-h" 'evil-scroll-column-left)
 
 ;; Navigation
-(keymap-set evil-normal-state-map "M-m" 'tab-recent)
+;;(keymap-set evil-normal-state-map "M-m" 'tab-recent)
 
 ;; Faster movement (Not good yet. Review it later)
 ;(keymap-set evil-normal-state-map "M-j" (lambda() (interactive) (evil-next-line 12)))
@@ -210,12 +210,14 @@ paragraph size that does not care of default fill-column value"
 ;; Better use of Cursor Jump Keys
 (keymap-set evil-normal-state-map "H" 'evil-first-non-blank)
 (keymap-set evil-normal-state-map "L" 'evil-end-of-line)
-(keymap-set evil-normal-state-map "M" 'evil-jump-item)
+;;(keymap-set evil-normal-state-map "M" 'evil-jump-item)
+(keymap-set evil-normal-state-map "M" 'evilmi-jump-items)
 
 ;; Better use of Cursor Jump Keys (Visual Mode)
 (keymap-set evil-visual-state-map "H" 'evil-first-non-blank)
 (keymap-set evil-visual-state-map "L" 'evil-end-of-line)
-(keymap-set evil-visual-state-map "M" 'evil-jump-item)
+;;(keymap-set evil-visual-state-map "M" 'evil-jump-item)
+(keymap-set evil-visual-state-map "M" 'evilmi-jump-items)
 
 ;; Replace / Query-Replace
 (keymap-set evil-normal-state-map "SPC s s" 'replace-regexp)
@@ -301,3 +303,11 @@ paragraph size that does not care of default fill-column value"
                     :foreground "#fff"
                     :background "#f00"
                     :inherit nil)
+
+;; Matchit (better %. works with tags)
+(unless (package-installed-p 'evil-matchit)
+  (package-install 'evil-matchit))
+
+;; (with-eval-after-load 'evil
+;;   (require 'evil-matchit)
+;;   (global-evil-matchit-mode t))
