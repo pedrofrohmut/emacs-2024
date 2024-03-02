@@ -1,23 +1,29 @@
+;; Copy/Paste  ##################################################################
 
-;; Copy/Paste  ######################################################################################
+;; Old behaviour of emacs (prior to 24)
+(setq select-enable-clipboard nil) ;; Prevent kill and yank commands from accessing the clipboard,
+(setq select-enable-primary t)
+(setq mouse-drag-copy-region t)
 
-(unless (package-installed-p 'simpleclip)
-  (package-install 'simpleclip))
+;; Emacs doesnt transferm kill-ring to system clipboard
+(setq x-select-enable-clipboard-manager nil)
 
-(require 'simpleclip)
+;; XClip ########################################################################
 
-(simpleclip-mode t)
+(unless (package-installed-p 'xclip)
+  (package-install 'xclip))
 
-;; Copy And Paste do not use System Clipboard (nil is the default in VIM)
-(setq select-enable-clipboard t)
-(setq select-enable-primary nil)
+(xclip-mode t)
+
+(defun my/clipboard-replace-region ()
+  (interactive)
+  (kill-region evil-visual-beginning evil-visual-end)
+  (clipboard-yank))
 
 ;; Clipboard Copy/Paste (Normal)
-(define-key evil-normal-state-map (kbd "SPC s y") 'simpleclip-copy)
-(define-key evil-normal-state-map (kbd "SPC s p") 'simpleclip-paste)
-(define-key evil-normal-state-map (kbd "SPC s d") 'simpleclip-cut)
+(define-key evil-normal-state-map (kbd "SPC s p") 'clipboard-yank)
 
 ;; Clipboard Copy/Paste (Visual)
-(define-key evil-visual-state-map (kbd "SPC s y") 'simpleclip-copy)
-(define-key evil-visual-state-map (kbd "SPC s p") 'simpleclip-paste)
-(define-key evil-visual-state-map (kbd "SPC s d") 'simpleclip-cut)
+(define-key evil-visual-state-map (kbd "SPC s y") 'clipboard-kill-ring-save)
+(define-key evil-visual-state-map (kbd "SPC s d") 'clipboard-kill-region)
+(define-key evil-visual-state-map (kbd "SPC s p") #'my/clipboard-replace-region)
