@@ -10,3 +10,4 @@ transient/
 .markdown-preview.html
 tree-sitter/
 recentf
+emacs-custom.el

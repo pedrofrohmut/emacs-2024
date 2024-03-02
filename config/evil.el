@@ -43,8 +43,6 @@
 (evil-global-set-key 'normal (kbd "SPC") nil)
 
 ;; Unsets
-(keymap-unset evil-normal-state-map "C-p")
-(keymap-unset evil-normal-state-map "C-n")
 (keymap-unset evil-normal-state-map "s")
 (keymap-unset evil-normal-state-map "S")
 (keymap-unset evil-normal-state-map "q")
@@ -155,7 +153,7 @@
 (keymap-set evil-normal-state-map "SPC h l" 'global-visual-line-mode)
 
 ;; Set wombat theme (in case of error)
-(keymap-set evil-normal-state-map "SPC h t" (lambda() (interactive) (load-theme 'wombat t)))
+;(keymap-set evil-normal-state-map "SPC h t" (lambda() (interactive) (load-theme 'wombat t)))
 
 ;; Toggle whitespace
 (keymap-set evil-normal-state-map "SPC h w" 'global-whitespace-mode)
@@ -173,11 +171,12 @@
 ;; Find my home
 (keymap-set evil-normal-state-map "SPC f h" #'my/find-file-home)
 
+;; TODO accept optional argument and have 81 as default
 (defun my/fill-paragraph ()
   "Fill paragraph with fill-column set to 100. Just to have a different and custom
 paragraph size that does not care of default fill-column value"
   (interactive)
-  (let* ((fill-column 101))
+  (let* ((fill-column 81))
     (call-interactively #'evil-fill-and-move)))
 
 (keymap-set evil-normal-state-map "g q" #'my/fill-paragraph)

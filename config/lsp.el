@@ -63,5 +63,5 @@
 
 ;; Flymake #####################################################################
 
-(keymap-set evil-normal-state-map "C-n" 'flymake-goto-next-error)
-(keymap-set evil-normal-state-map "C-p" 'flymake-goto-prev-error)
+(keymap-set evil-normal-state-map "SPC c n" 'flymake-goto-next-error)
+(keymap-set evil-normal-state-map "SPC c p" 'flymake-goto-prev-error)

@@ -19,13 +19,7 @@
 
 ;;; (setq tree-sitter-load-path '("/home/pedro/.config/emacs/elpa/tree-sitter-langs-20240212.1005/bin/"))
 
-;;; (tree-sitter-require 'javascript)
-;;; (tree-sitter-require 'typescript)
-;;; (tree-sitter-require 'tsx)
-
-;;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
-;;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-tsx-mode))
-
+;; Tree Sitter Auto Installer
 (unless (package-installed-p 'treesit-auto)
   (package-install 'treesit-auto))
 
@@ -49,10 +43,15 @@
 ;; Javascript ##################################################################
 (add-to-list 'auto-mode-alist '("\\.cjs\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-mode))
-(setq-default js-indent-level 4)
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-jsx-mode))
+
+(setq js-indent-level 4)
+(setq js-switch-indent-offset 4)
 
 ;; Typescript ##################################################################
 (setq-default typescript-ts-mode-indent-offset 4)
+;;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
+;;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-tsx-mode))
 
 ;; JSON ########################################################################
 (setq-default json-ts-mode-indent-offset 4)

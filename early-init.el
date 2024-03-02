@@ -8,7 +8,7 @@
 ;; Apperance ###################################################################
 
 (add-to-list 'default-frame-alist '(font . "Fira Code 13"))
-(add-to-list 'default-frame-alist '(foreground-color . "#888"))
+(add-to-list 'default-frame-alist '(foreground-color . "#ddd"))
 (add-to-list 'default-frame-alist '(alpha-background . 90))
 (add-to-list 'default-frame-alist '(background-color . "#1a1b26"))
 (add-to-list 'default-frame-alist '(cursor-color . "#ff0"))

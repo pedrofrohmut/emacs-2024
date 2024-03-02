@@ -130,14 +130,3 @@
 
 ;; Loads Modus Theme
 (load-theme 'modus-vivendi :no-confirm)
-
-;; Doom theme #######################################################################################
-
-;(unless (package-installed-p 'doom-themes)
-;  (package-install 'doom-themes))
-
-;(load-theme 'doom-tokyo-night t)
-;(load-theme 'doom-meltbus t)
-;(load-theme 'doom-ir-black t)
-;(load-theme 'doom-plain-dark t)
-;(load-theme 'wombat t)
