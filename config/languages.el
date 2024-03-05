@@ -20,17 +20,17 @@
 ;;; (setq tree-sitter-load-path '("/home/pedro/.config/emacs/elpa/tree-sitter-langs-20240212.1005/bin/"))
 
 ;; Tree Sitter Auto Installer
-(unless (package-installed-p 'treesit-auto)
-  (package-install 'treesit-auto))
-
-(with-eval-after-load 'tree-sitter
-  (require 'treesit-auto))
-
-(setq treesit-auto-install 'prompt)
-
-(treesit-auto-add-to-auto-mode-alist 'all)
-
-(global-treesit-auto-mode)
+;;(unless (package-installed-p 'treesit-auto)
+;;  (package-install 'treesit-auto))
+;;
+;;(with-eval-after-load 'tree-sitter
+;;  (require 'treesit-auto))
+;;
+;;(setq treesit-auto-install 'prompt)
+;;
+;;(treesit-auto-add-to-auto-mode-alist 'all)
+;;
+;;(global-treesit-auto-mode)
 
 ;; HTML ########################################################################
 (setq-default sgml-basic-offset 2)
@@ -43,7 +43,7 @@
 ;; Javascript ##################################################################
 (add-to-list 'auto-mode-alist '("\\.cjs\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
 
 (setq js-indent-level 4)
 (setq js-switch-indent-offset 4)
@@ -57,6 +57,13 @@
 (setq-default json-ts-mode-indent-offset 4)
 
 ;; React #######################################################################
+(add-to-list' auto-mode-alist '("\\(\\.js[mx]\\|\\.har\\)\\'" . js-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-jsx-mode))
+
+;(setq js-jsx-detect-syntax nil)
+;; (setq auto-mode-alist
+;;       (delete '("\\(\\.js[mx]\\|\\.har\\)\\'" . js-ts-mode) auto-mode-alist))
+
 ;; (unless (package-installed-p 'rjsx-mode)
 ;;   (package-install 'rjsx-mode))
 

@@ -31,13 +31,13 @@
 
 ;; Consult Dir #################################################################
 
-(unless (package-installed-p 'consult-dir)
-  (package-install 'consult-dir))
-
-;; Cancel bookmark behaviour
-(setq consult-dir-project-list-function nil)
-
-(keymap-set evil-normal-state-map "SPC f d" 'consult-dir)
-
-(keymap-set vertico-map "C-d" 'consult-dir)
-(keymap-set vertico-map "M-d" 'consult-dir-jump)
+;;(unless (package-installed-p 'consult-dir)
+;;  (package-install 'consult-dir))
+;;
+;;;; Cancel bookmark behaviour
+;;(setq consult-dir-project-list-function nil)
+;;
+;;(keymap-set evil-normal-state-map "SPC f d" 'consult-dir)
+;;
+;;(keymap-set vertico-map "C-d" 'consult-dir)
+;;(keymap-set vertico-map "M-d" 'consult-dir-jump)

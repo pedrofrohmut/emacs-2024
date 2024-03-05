@@ -182,7 +182,14 @@
 (keymap-global-set "M-SPC" 'execute-extended-command)
 
 ;; Alt tab inside Emacs
-(keymap-set evil-normal-state-map "C-M-i" 'tab-recent)
+;(keymap-set evil-normal-state-map "C-M-i" 'tab-recent)
+
+;; Buffer recent
+(defun my/switch-to-recent-buffer ()
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
+
+(keymap-set evil-normal-state-map "C-M-i" #'my/switch-to-recent-buffer)
 
 ;; Compile my code
 (keymap-set evil-normal-state-map "SPC r c" 'project-compile)

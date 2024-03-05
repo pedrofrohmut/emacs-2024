@@ -19,6 +19,7 @@
 
 ;; Dabbrev ########################################################################
 
+;; TODO: make a cape function with only Dabbrev for the C n and C p
 (keymap-set evil-insert-state-map "C-p" 'dabbrev-completion)
 (keymap-set evil-insert-state-map "C-n" 'dabbrev-completion)
 

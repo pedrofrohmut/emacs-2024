@@ -66,28 +66,23 @@
 ;; Ctrl-l as delete
 (keymap-set evil-insert-state-map "C-l" 'evil-delete-char)
 
-;; Scroll up/down
-(keymap-set evil-normal-state-map "C-j" (lambda () (interactive) (evil-scroll-down 12)))
-(keymap-set evil-normal-state-map "C-k" (lambda () (interactive) (evil-scroll-up 12)))
-
-(keymap-set evil-normal-state-map "M-l" 'evil-scroll-column-right)
-(keymap-set evil-normal-state-map "M-h" 'evil-scroll-column-left)
+;; Scrolling
+(keymap-set evil-normal-state-map "M-j" (lambda () (interactive) (evil-scroll-line-down 12)))
+(keymap-set evil-normal-state-map "M-k" (lambda () (interactive) (evil-scroll-line-up 12)))
+(keymap-set evil-normal-state-map "M-l" (lambda () (interactive) (evil-scroll-column-right 4)))
+(keymap-set evil-normal-state-map "M-h" (lambda () (interactive) (evil-scroll-column-left 4)))
 
 ;; Navigation
 ;;(keymap-set evil-normal-state-map "M-m" 'tab-recent)
-
-;; Faster movement (Not good yet. Review it later)
-;(keymap-set evil-normal-state-map "M-j" (lambda() (interactive) (evil-next-line 12)))
-;(keymap-set evil-normal-state-map "M-k" (lambda() (interactive) (evil-previous-line 12)))
-;(keymap-set evil-normal-state-map "M-h" 'evil-backward-WORD-begin)
-;(keymap-set evil-normal-state-map "M-l" 'evil-forward-WORD-end)
 
 ;; Faster Select
 (keymap-set evil-visual-state-map "v" 'evil-jump-item)
 
 ;; Change Tab normal mode
-(keymap-set evil-normal-state-map "C-l" 'tab-next)
-(keymap-set evil-normal-state-map "C-h" 'tab-previous)
+(keymap-set evil-normal-state-map "C-n" 'tab-next)
+(keymap-set evil-normal-state-map "C-p" 'tab-previous)
+;; (keymap-set evil-normal-state-map "C-l" 'tab-next)
+;; (keymap-set evil-normal-state-map "C-h" 'tab-previous)
 
 ;; Tabs
 (keymap-set evil-normal-state-map "SPC t c" 'tab-new)
@@ -132,19 +127,26 @@
 (keymap-set evil-normal-state-map "SPC w k" 'evil-window-move-very-top)
 (keymap-set evil-normal-state-map "SPC w l" 'evil-window-move-far-right)
 
+(keymap-set evil-normal-state-map "C-h" 'evil-window-left)
+(keymap-set evil-normal-state-map "C-j" 'evil-window-down)
+(keymap-set evil-normal-state-map "C-k" 'evil-window-up)
+(keymap-set evil-normal-state-map "C-l" 'evil-window-right)
+
+(keymap-set evil-normal-state-map "M-o" 'delete-other-windows)
+
 ;; Utils ############################################################################################
 
 ;; Buffers
 (keymap-set evil-normal-state-map "SPC b b" 'ibuffer)
-(keymap-set evil-normal-state-map "SPC b s" 'switch-to-buffer)
+(keymap-set evil-normal-state-map "SPC b s" 'project-switch-to-buffer)
+(keymap-set evil-normal-state-map "SPC b l" 'project-list-buffers)
 (keymap-set evil-normal-state-map "SPC b n" 'next-buffer)
 (keymap-set evil-normal-state-map "SPC b p" 'previous-buffer)
 (keymap-set evil-normal-state-map "SPC b d" 'kill-this-buffer)
 
-;; ;; Help
-;; (keymap-set evil-normal-state-map "SPC h f" 'describe-function)
-;; (keymap-set evil-normal-state-map "SPC h v" 'describe-variable)
-;; (keymap-set evil-normal-state-map "SPC h k" 'describe-key)
+(keymap-set evil-normal-state-map "C-b" 'project-switch-to-buffer)
+;; (keymap-set evil-normal-state-map "C-n" 'next-buffer)
+;; (keymap-set evil-normal-state-map "C-p" 'previous-buffer)
 
 ;; Restart Emacs
 ;(keymap-set evil-normal-state-map "SPC h r r" 'restart-emacs)
@@ -215,8 +217,8 @@ paragraph size that does not care of default fill-column value"
 ;; Better use of Cursor Jump Keys (Visual Mode)
 (keymap-set evil-visual-state-map "H" 'evil-first-non-blank)
 (keymap-set evil-visual-state-map "L" 'evil-end-of-line)
-;;(keymap-set evil-visual-state-map "M" 'evil-jump-item)
-(keymap-set evil-visual-state-map "M" 'evilmi-jump-items)
+(keymap-set evil-visual-state-map "M" 'evil-jump-item)
+;;(keymap-set evil-normal-state-map "M" 'evilmi-jump-items)
 
 ;; Replace / Query-Replace
 (keymap-set evil-normal-state-map "SPC s s" 'replace-regexp)
@@ -229,10 +231,10 @@ paragraph size that does not care of default fill-column value"
 (keymap-set evil-visual-state-map "SPC SPC" 'evil-indent)
 
 ;; Move on insert mode for japanese typing (Vim users lol)
-;(keymap-set evil-insert-state-map "M-h" 'left-char)
-;(keymap-set evil-insert-state-map "M-j" 'next-line)
-;(keymap-set evil-insert-state-map "M-k" 'previous-line)
-;(keymap-set evil-insert-state-map "M-l" 'right-char)
+(keymap-set evil-insert-state-map "M-h" 'left-char)
+(keymap-set evil-insert-state-map "M-j" 'next-line)
+(keymap-set evil-insert-state-map "M-k" 'previous-line)
+(keymap-set evil-insert-state-map "M-l" 'right-char)
 
 ;; Extra Evil Packages #############################################################
 
@@ -293,10 +295,6 @@ paragraph size that does not care of default fill-column value"
 (with-eval-after-load 'evil
   (require 'evil-goggles)
   (evil-goggles-mode))
-
-;; (custom-set-faces
-;;  '(evil-goggles-default-face
-;;    ((t (:background "#f00" :foreground "#fff")))))
 
 (set-face-attribute 'evil-goggles-default-face nil
                     :foreground "#fff"
