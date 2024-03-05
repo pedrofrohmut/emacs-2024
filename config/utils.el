@@ -36,3 +36,15 @@
 ;;(add-hook 'text-mode-hook
 ;;          (lambda ()
 ;;            (setq-local electric-pair-inhibit-predicate #'my-electric-pair-inhibit-double-quote-predicate)))
+
+;; Undo Tree ####################################################################
+
+(unless (package-installed-p 'undo-tree)
+  (package-install 'undo-tree))
+
+;; Remove the backup files everywhere
+(setq undo-tree-auto-save-history nil)
+
+(global-undo-tree-mode)
+
+(keymap-set evil-normal-state-map "M-u" 'undo-tree-visualize)

@@ -9,7 +9,8 @@
 (setq evil-want-C-u-delete t)
 (setq evil-want-C-i-jump t)
 (setq evil-want-Y-yank-to-eol t)
-(setq evil-undo-system 'undo-redo)
+;(setq evil-undo-system 'undo-redo)
+(setq evil-undo-system 'undo-tree)
 (setq evil-want-keybinding nil) ; Evil collection asks for it
 (setq evil-kill-on-visual-paste nil) ;; when you replace in visual mode dont change the register
 (setq evil-echo-state nil) ;; Dont need this

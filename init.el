@@ -36,7 +36,7 @@
 (save-place-mode t)
 
 ;; Keep a Recent File List
-(recentf-mode t)
+;(recentf-mode t)
 
 ;; Files
 (setq make-backup-files nil)
@@ -82,7 +82,7 @@
 
 ;; Set customize file
 (setq custom-file "~/.config/emacs/emacs-custom.el")
-(load custom-file)
+(load custom-file :noerror)
 
 ;; Fonts
 (set-face-font 'default "Fira Code 12")
@@ -94,6 +94,9 @@
 
 ;; NativeComp - Set the directory to store cache
 (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
+
+;; Highlight line
+(global-hl-line-mode)
 
 ;; Unset Keybinds ###################################################################################
 
