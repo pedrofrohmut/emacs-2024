@@ -27,4 +27,4 @@
           (neotree))
       (message "No project found."))))
 
-(keymap-set evil-normal-state-map "C-b" #'neotree-project-dir)
+(keymap-set evil-normal-state-map "SPC f t" #'neotree-project-dir)

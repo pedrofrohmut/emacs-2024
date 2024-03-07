@@ -232,10 +232,10 @@ paragraph size that does not care of default fill-column value"
 (keymap-set evil-visual-state-map "SPC SPC" 'evil-indent)
 
 ;; Move on insert mode for japanese typing (Vim users lol)
-(keymap-set evil-insert-state-map "M-h" 'left-char)
-(keymap-set evil-insert-state-map "M-j" 'next-line)
-(keymap-set evil-insert-state-map "M-k" 'previous-line)
-(keymap-set evil-insert-state-map "M-l" 'right-char)
+;;(keymap-set evil-insert-state-map "M-h" 'left-char)
+;;(keymap-set evil-insert-state-map "M-j" 'next-line)
+;;(keymap-set evil-insert-state-map "M-k" 'previous-line)
+;;(keymap-set evil-insert-state-map "M-l" 'right-char)
 
 ;; Extra Evil Packages #############################################################
 

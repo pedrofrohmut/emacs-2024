@@ -141,7 +141,7 @@
 (load "~/.config/emacs/config/dired.el")
 
 ;; File Tree
-;(load "~/.config/emacs/config/file-tree.el")
+(load "~/.config/emacs/config/file-tree.el")
 
 ;; Project
 (load "~/.config/emacs/config/projects.el")
@@ -186,6 +186,14 @@
 
 ;; Alt tab inside Emacs
 ;(keymap-set evil-normal-state-map "C-M-i" 'tab-recent)
+
+;; Enter do not indent everytime
+(defun my/new-line ()
+  (interactive)
+  (call-interactively #'electric-indent-just-newline)
+  (indent-for-tab-command))
+
+(keymap-set evil-insert-state-map "RET" #'my/new-line)
 
 ;; Buffer recent
 (defun my/switch-to-recent-buffer ()

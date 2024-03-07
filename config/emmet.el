@@ -7,9 +7,6 @@
 (setq emmet-self-closing-tag-style " /")
 (require 'emmet-mode)
 
-;; TODO: Review emmet docs for JSX Support
-;;(add-to-list 'emmet-jsx-major-modes 'your-jsx-major-mode)
-
 ;; Unsetting keys
 (keymap-unset emmet-mode-keymap "C-j")
 (keymap-unset emmet-mode-keymap "C-M-<left>")

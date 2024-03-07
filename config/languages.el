@@ -32,7 +32,10 @@
 ;;
 ;;(global-treesit-auto-mode)
 
-;; HTML ########################################################################
+;; ELisp ########################################################################
+(setq-default list-indent-offset 2)
+
+;; HTML #########################################################################
 (setq-default sgml-basic-offset 2)
 
 ;; (evil-define-key 'normal html-mode-map (kbd "M-b") 'sgml-skip-tag-backward)
@@ -40,7 +43,7 @@
 ;; (evil-define-key 'normal html-mode-map (kbd "C-c p") 'sgml-skip-tag-backward)
 ;; (evil-define-key 'normal html-mode-map (kbd "C-c n") 'sgml-skip-tag-forward)
 
-;; Javascript ##################################################################
+;; Javascript ###################################################################
 (add-to-list 'auto-mode-alist '("\\.cjs\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
@@ -48,7 +51,7 @@
 (setq js-indent-level 4)
 (setq js-switch-indent-offset 4)
 
-;; Typescript ##################################################################
+;; Typescript ###################################################################
 (setq-default typescript-ts-mode-indent-offset 4)
 ;;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 ;;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-tsx-mode))

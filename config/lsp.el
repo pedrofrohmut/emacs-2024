@@ -52,8 +52,14 @@
 
 ;; Flycheck ####################################################################
 
-;; (unless (package-installed-p 'flycheck)
-;;   (package-install 'flycheck))
+(unless (package-installed-p 'flycheck)
+  (package-install 'flycheck))
+
+(unless (package-installed-p 'flycheck-eglot)
+  (package-install 'flycheck-eglot))
+
+(add-hook 'eglot-managed-mode-hook '((global-flycheck-mode)
+				     (global-flycheck-eglot-mode t)))
 
 ;; (package-install 'flycheck)
 

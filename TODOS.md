@@ -12,7 +12,7 @@ EXTRA. [X] Vertico (Vertico, Orderless, Marginalia, Consult, Embark) and Corfu
 
 8. Irony Mode (C/C++ minor mode powered by libclang)
 
-9. Make with abbrev: --foo to  var(--foo) for CSS files
+<!-- 9. Make with abbrev: --foo to  var(--foo) for CSS files -->
 
 10. Have a look at perspective.el for having multiple projects opened in Emacs but
 each one has its own list of buffers and so on
@@ -36,20 +36,6 @@ disturbing the layout and opened windows
 ; X 3. Set variable-pitch font and ligatures
 ; X   3.1 https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
 ; X   3.2 https://github.com/mickeynp/ligature.el
-
-; 5. Minibuffer stuff like ivy, vertico, helm, etc
-
-; 6. Add Wilfred/helpful and make relative remaps
-
-; 7. Config global-hl-line-mode
-
-; 8. Check out vertico, marginalia, consult, orderless, prescient
-
-; 9. See Blink Search (former Snails) as an alternative to Telescope
-
-; 10. Check aggressive-indent-mode for better indentation
-
-; 13. Add undo tree support
 
 ; 14. Check out Emacs Awesome: The Programming section and below
 
