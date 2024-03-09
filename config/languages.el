@@ -60,7 +60,7 @@
 (setq-default json-ts-mode-indent-offset 4)
 
 ;; React #######################################################################
-(add-to-list' auto-mode-alist '("\\(\\.js[mx]\\|\\.har\\)\\'" . js-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\(\\.js[mx]\\|\\.har\\)\\'" . js-jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-jsx-mode))
 
 ;(setq js-jsx-detect-syntax nil)
@@ -85,8 +85,17 @@
 ; Set offset for opening brace of substatement (e.g., function definition) to 0
 ;(setq c-offsets-alist '((substatement-open . 0)))
 
+;; CSharp #######################################################################
+
+(add-to-list 'auto-mode-alist '("\\.csproj\\'" . xml-mode))
+
 ;; Yaml ########################################################################
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-ts-mode))
+
+(unless (package-installed-p 'yaml-mode)
+  (package-install 'yaml-mode))
+
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
 ;; Ocaml #######################################################################
 

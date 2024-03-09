@@ -3,6 +3,10 @@
 (unless (package-installed-p 'neotree)
   (package-install 'neotree))
 
+(setq neo-window-width 45)
+(setq neo-window-fixed-size nil)
+(setq neo-theme 'nerd)
+
 (keymap-set evil-normal-state-map "<f8>" 'neotree-toggle)
 
 ;; Use with evil mode

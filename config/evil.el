@@ -128,12 +128,16 @@
 (keymap-set evil-normal-state-map "SPC w k" 'evil-window-move-very-top)
 (keymap-set evil-normal-state-map "SPC w l" 'evil-window-move-far-right)
 
+;; Windows focus
 (keymap-set evil-normal-state-map "C-h" 'evil-window-left)
 (keymap-set evil-normal-state-map "C-j" 'evil-window-down)
 (keymap-set evil-normal-state-map "C-k" 'evil-window-up)
 (keymap-set evil-normal-state-map "C-l" 'evil-window-right)
 
-(keymap-set evil-normal-state-map "M-o" 'delete-other-windows)
+;; TODO: check if it errors and fix if needed
+(keymap-set evil-normal-state-map "M-o" (lambda () (interactive)
+					  (delete-other-windows)
+					  (neotree-hide)))
 
 ;; Utils ############################################################################################
 

@@ -80,6 +80,9 @@
 ;; Set root dir for project.el
 (setq project-vc-extra-root-markers '(".project.el" ".projectile" ))
 
+;; Set line break to LF
+;; TODO unix and utf-8
+
 ;; Set customize file
 (setq custom-file "~/.config/emacs/emacs-custom.el")
 (load custom-file :noerror)
@@ -161,6 +164,9 @@
 ;; Auto-complete
 (load "~/.config/emacs/config/auto-complete.el")
 
+;; Compile
+(load "~/.config/emacs/config/compile.el")
+
 ;; Consult
 (load "~/.config/emacs/config/consult.el")
 
@@ -193,7 +199,7 @@
   (call-interactively #'electric-indent-just-newline)
   (indent-for-tab-command))
 
-(keymap-set evil-insert-state-map "RET" #'my/new-line)
+(keymap-set evil-insert-state-map "M-j" #'my/new-line)
 
 ;; Buffer recent
 (defun my/switch-to-recent-buffer ()
@@ -201,10 +207,6 @@
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
 (keymap-set evil-normal-state-map "C-M-i" #'my/switch-to-recent-buffer)
-
-;; Compile my code
-(keymap-set evil-normal-state-map "SPC r c" 'project-compile)
-(keymap-set evil-normal-state-map "SPC r e" 'compile-goto-error)
 
 ;; Startup Function #############################################################
 
