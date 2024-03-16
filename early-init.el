@@ -13,7 +13,6 @@
 (add-to-list 'default-frame-alist '(background-color . "#1a1b26"))
 (add-to-list 'default-frame-alist '(cursor-color . "#ff0"))
 
-
 ;; UI
 (tool-bar-mode 0)
 (menu-bar-mode 0)

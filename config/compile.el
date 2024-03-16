@@ -24,7 +24,7 @@
 	  (lambda ()
 	    (pop-to-buffer (get-buffer "*compilation*"))
 	    ;; Add delay so the jump to error can work
-	    (run-at-time 0.1 nil
+	    (run-at-time 0.3 nil
 			 (lambda ()
 			   (if (> compilation-num-errors-found 0)
 			       (compilation-next-error 1))))))

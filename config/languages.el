@@ -20,17 +20,17 @@
 ;;; (setq tree-sitter-load-path '("/home/pedro/.config/emacs/elpa/tree-sitter-langs-20240212.1005/bin/"))
 
 ;; Tree Sitter Auto Installer
-;;(unless (package-installed-p 'treesit-auto)
-;;  (package-install 'treesit-auto))
-;;
-;;(with-eval-after-load 'tree-sitter
-;;  (require 'treesit-auto))
-;;
-;;(setq treesit-auto-install 'prompt)
-;;
-;;(treesit-auto-add-to-auto-mode-alist 'all)
-;;
-;;(global-treesit-auto-mode)
+(unless (package-installed-p 'treesit-auto)
+  (package-install 'treesit-auto))
+
+(with-eval-after-load 'tree-sitter
+  (require 'treesit-auto))
+
+(setq treesit-auto-install 'prompt)
+
+(treesit-auto-add-to-auto-mode-alist 'all)
+
+(global-treesit-auto-mode)
 
 ;; ELisp ########################################################################
 (setq-default list-indent-offset 2)
@@ -87,7 +87,11 @@
 
 ;; CSharp #######################################################################
 
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+
 (add-to-list 'auto-mode-alist '("\\.csproj\\'" . xml-mode))
+(add-to-list 'auto-mode-alist '("\\.cshtml\\'" . sgml-mode))
 
 ;; Yaml ########################################################################
 

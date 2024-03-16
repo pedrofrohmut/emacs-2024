@@ -6,6 +6,91 @@
 (package-initialize)
 ;;(package-refresh-contents)
 
+;; NativeComp - Set the directory to store cache
+(add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
+
+;; NativeComp - Silence compiler warnings
+(setq native-comp-async-report-warnings-errors nil)
+
+;; Unset Keybinds ###################################################################################
+
+(global-unset-key (kbd "C-h"))  ;; Can still use help with F1
+(global-unset-key (kbd "C-l"))  ;; Can use evil zz
+(global-unset-key (kbd "C-j"))  ;; Not useful before
+(global-unset-key (kbd "C-k"))  ;; Not useful either
+(global-unset-key (kbd "C-SPC")) ;; For emmet
+(global-unset-key (kbd "M-k")) ;; To tab-recent
+(global-unset-key (kbd "M-j")) ;; To next-window
+
+;; Config Files #####################################################################################
+
+;; Evil - Vi mode and extra evil packages
+(load "~/.config/emacs/config/evil.el")
+
+;; Terminals
+(load "~/.config/emacs/config/terminals.el")
+
+;; Utils: Visual Fill Column, Restart Emacs
+(load "~/.config/emacs/config/utils.el")
+
+;; Emmet
+(load "~/.config/emacs/config/emmet.el")
+
+;; Snippets
+(load "~/.config/emacs/config/snippets.el")
+
+;; Tabs
+;(load "~/.config/emacs/config/tabs.el")
+
+;; Witchkey
+;(load "~/.config/emacs/config/which-key.el")
+
+;; Navigation (Jumping)
+(load "~/.config/emacs/config/navigation.el")
+
+;; Dired
+(load "~/.config/emacs/config/dired.el")
+
+;; File Tree
+(load "~/.config/emacs/config/file-tree.el")
+
+;; Project
+(load "~/.config/emacs/config/projects.el")
+
+;; Languages
+(load "~/.config/emacs/config/languages.el")
+
+;; Eglot LSP
+(load "~/.config/emacs/config/lsp.el")
+
+;; Markdown
+(load "~/.config/emacs/config/markdown.el")
+
+;; Minibuffer
+(load "~/.config/emacs/config/minibuffer.el")
+
+;; Auto-complete
+(load "~/.config/emacs/config/auto-complete.el")
+
+;; Compile
+(load "~/.config/emacs/config/compile.el")
+
+;; Consult
+(load "~/.config/emacs/config/consult.el")
+
+;; Copy and Paste
+(load "~/.config/emacs/config/copy-paste.el")
+
+;; Helpful
+(load "~/.config/emacs/config/helpful.el")
+
+;; Theme - theme, mode line, etc
+;(load "~/.config/emacs/config/theme.el")
+(load "~/.config/emacs/config/alt-theme.el")
+
+;; Git support
+(load "~/.config/emacs/config/git-support.el")
+
 ;; Options ######################################################################
 
 (setq inhibit-startup-message t)
@@ -92,92 +177,8 @@
 (set-face-font 'variable-pitch "Fira Sans 12")
 (set-face-font 'fixed-pitch "Fira Code 12")
 
-;; NativeComp - Silence compiler warnings
-(setq native-comp-async-report-warnings-errors nil)
-
-;; NativeComp - Set the directory to store cache
-(add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
-
 ;; Highlight line
 (global-hl-line-mode)
-
-;; Unset Keybinds ###################################################################################
-
-(global-unset-key (kbd "C-h"))  ;; Can still use help with F1
-(global-unset-key (kbd "C-l"))  ;; Can use evil zz
-(global-unset-key (kbd "C-j"))  ;; Not useful before
-(global-unset-key (kbd "C-k"))  ;; Not useful either
-(global-unset-key (kbd "C-SPC")) ;; For emmet
-(global-unset-key (kbd "M-k")) ;; To tab-recent
-(global-unset-key (kbd "M-j")) ;; To next-window
-
-;; Config Files #####################################################################################
-
-;; Evil - Vi mode and extra evil packages
-(load "~/.config/emacs/config/evil.el")
-
-;; Theme - theme, mode line, etc
-(load "~/.config/emacs/config/theme.el")
-
-;; Terminals
-(load "~/.config/emacs/config/terminals.el")
-
-;; Utils: Visual Fill Column, Restart Emacs
-(load "~/.config/emacs/config/utils.el")
-
-;; Emmet
-(load "~/.config/emacs/config/emmet.el")
-
-;; Snippets
-(load "~/.config/emacs/config/snippets.el")
-
-;; Tabs
-;(load "~/.config/emacs/config/tabs.el")
-
-;; Witchkey
-;(load "~/.config/emacs/config/which-key.el")
-
-;; Navigation (Jumping)
-(load "~/.config/emacs/config/navigation.el")
-
-;; Dired
-(load "~/.config/emacs/config/dired.el")
-
-;; File Tree
-(load "~/.config/emacs/config/file-tree.el")
-
-;; Project
-(load "~/.config/emacs/config/projects.el")
-
-;; Languages
-(load "~/.config/emacs/config/languages.el")
-
-;; Eglot LSP
-(load "~/.config/emacs/config/lsp.el")
-
-;; Markdown
-(load "~/.config/emacs/config/markdown.el")
-
-;; Minibuffer
-(load "~/.config/emacs/config/minibuffer.el")
-
-;; Auto-complete
-(load "~/.config/emacs/config/auto-complete.el")
-
-;; Compile
-(load "~/.config/emacs/config/compile.el")
-
-;; Consult
-(load "~/.config/emacs/config/consult.el")
-
-;; Copy and Paste
-(load "~/.config/emacs/config/copy-paste.el")
-
-;; Helpful
-(load "~/.config/emacs/config/helpful.el")
-
-;; Git support
-(load "~/.config/emacs/config/git-support.el")
 
 ;; Keybinds #####################################################################
 
@@ -189,9 +190,6 @@
 
 ;; Better M-x
 (keymap-global-set "M-SPC" 'execute-extended-command)
-
-;; Alt tab inside Emacs
-;(keymap-set evil-normal-state-map "C-M-i" 'tab-recent)
 
 ;; Enter do not indent everytime
 (defun my/new-line ()

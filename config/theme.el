@@ -1,4 +1,4 @@
-;; Tokyo Night Colors ###############################################################################
+;; Tokyo Night Colors ###########################################################
 
 (defvar tokyo-night-bg         "#1a1b26")
 (defvar tokyo-night-bg-alt     "#13141c")
@@ -28,7 +28,7 @@
 (defvar tokyo-night-dark-green "#9ece6a") ;; green
 (defvar tokyo-night-brown      "#cfc9c2") ;; yellow
 
-;; Wombat Colors ####################################################################################
+;; Wombat Colors ################################################################
 
 (defvar wombat-fg       "#f6f3e8")
 (defvar wombat-bg       "#242424")
@@ -53,6 +53,20 @@
 (defvar wombat-gray     "#424242")
 (defvar wombat-gray+1   "#99968b")
 
+;; My Custom Colors #############################################################
+
+(defvar my-dark-gray-blue "#58a")
+(defvar my-light-orange "#f93")
+
+(defvar my-active-bg "#233")
+(defvar my-active-fg "#0ff")
+(defvar my-active-fg-dimmed "#0aa")
+
+(defvar my-inactive-bg "#222")
+(defvar my-inactive-fg "#888")
+(defvar my-inactive-fg-dimmed "#666")
+(defvar my-inactive-fg-accented "#ccc")
+
 ;; Modus theme ##################################################################
 
 ;; All variables must be set before load-theme
@@ -70,22 +84,27 @@
 
 ;; Override the theme colors
 (setq modus-themes-vivendi-color-overrides
-      '((bg-main . "#1a1b26")))
-	;; (fringe tokyo-night-bg)))
+      '((bg-main . "#1a1b26")
+	(fringe unspecified)
+        (fg-line-number-inactive my-inactive-fg)
+        (bg-line-number-inactive tokyo-night-bg)
+        (fg-line-number-active my-active-fg-dimmed)
+	(bg-line-number-active my-active-bg)
+	))
 
-;; My Custom Colors #################################################################################
+;; Override the theme colors
+;; (setq modus-themes-common-palette-overrides
+;;       '((bg-main . "#1a1b26")
+;; 	(fringe  . "#1a1b26")
+;;         (fg-line-number-inactive "gray50")
+;;         (fg-line-number-active red-cooler)
+;;         (bg-line-number-inactive unspecified)
+;;         (bg-line-number-active unspecified)))
 
-(defvar my-dark-gray-blue "#58a")
-(defvar my-light-orange "#f93")
+;; Loads Modus Theme
+(load-theme 'modus-vivendi :no-confirm)
 
-(defvar my-active-bg "#233")
-(defvar my-active-fg "#0ff")
-(defvar my-active-fg-dimmed "#0aa")
-
-(defvar my-inactive-bg "#222")
-(defvar my-inactive-fg "#888")
-(defvar my-inactive-fg-dimmed "#666")
-(defvar my-inactive-fg-accented "#ccc")
+;; My Custom Faces ##############################################################
 
 ;; Comments
 (set-face-foreground 'font-lock-comment-face my-dark-gray-blue)
@@ -123,10 +142,8 @@
                     :background my-active-bg
                     :inherit nil)
 
+;; Fringe
 (set-face-attribute 'fringe nil
 		    :foreground "#fff"
 		    :background tokyo-night-bg
 		    :inherit nil)
-
-;; Loads Modus Theme
-(load-theme 'modus-vivendi :no-confirm)

@@ -24,9 +24,9 @@
 (setq evil-cross-lines nil)
 
 ;; Indentation
-(setq evil-auto-indent t)
-(setq evil-shift-width 4)
-(setq evil-indent-convert-tabs t)
+;(setq evil-auto-indent t)
+;(setq evil-shift-width 4)
+;(setq evil-indent-convert-tabs t)
 
 ;; Cursor
 (setq evil-normal-state-cursor   '("yellow" box)
@@ -49,8 +49,12 @@
 (keymap-unset evil-normal-state-map "q")
 
 ;; Move Up/down on wrap text (more repeatable than g j and g k)
-(keymap-set evil-normal-state-map "M-j" 'evil-next-visual-line)
-(keymap-set evil-normal-state-map "M-k" 'evil-previous-visual-line)
+;(keymap-set evil-normal-state-map "M-j" 'evil-next-visual-line)
+;(keymap-set evil-normal-state-map "M-k" 'evil-previous-visual-line)
+
+;; Tab indents
+(keymap-set evil-normal-state-map "SPC SPC" 'evil-indent)
+(keymap-set evil-visual-state-map "SPC SPC" 'evil-indent)
 
 ;; macro in a key you just wont type for accident
 (keymap-set evil-normal-state-map "M-q" 'evil-record-macro)
@@ -88,10 +92,11 @@
 ;; Tabs
 (keymap-set evil-normal-state-map "SPC t c" 'tab-new)
 (keymap-set evil-normal-state-map "SPC t q" 'tab-close)
-(keymap-set evil-normal-state-map "SPC t o" 'tab-close-other)
+;; (keymap-set evil-normal-state-map "SPC t o" 'tab-close-other)
 (keymap-set evil-normal-state-map "SPC t u" 'tab-undo)
 (keymap-set evil-normal-state-map "SPC t l" 'tab-move)
 (keymap-set evil-normal-state-map "SPC t h" (lambda() (interactive) (tab-move -1)))
+(keymap-set evil-normal-state-map "SPC t o" (lambda() (interactive) (tab-bar-close-other-tabs) (tab-bar-mode nil)))
 
 ;; Tabs by Number
 (keymap-set evil-normal-state-map "M-1" (lambda() (interactive) (tab-select 1)))
@@ -232,8 +237,8 @@ paragraph size that does not care of default fill-column value"
 (keymap-set evil-visual-state-map "SPC s q" 'query-replace-regexp)
 
 ;; Format on visual
-(keymap-set evil-normal-state-map "SPC SPC" 'evil-indent)
-(keymap-set evil-visual-state-map "SPC SPC" 'evil-indent)
+;; (keymap-set evil-normal-state-map "SPC SPC" 'evil-indent)
+;; (keymap-set evil-visual-state-map "SPC SPC" 'evil-indent)
 
 ;; Move on insert mode for japanese typing (Vim users lol)
 ;;(keymap-set evil-insert-state-map "M-h" 'left-char)

@@ -12,3 +12,4 @@ tree-sitter/
 recentf
 emacs-custom.el
 .cache/
+**/*.elc

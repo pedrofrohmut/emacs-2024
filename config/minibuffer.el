@@ -30,6 +30,9 @@
 (keymap-set vertico-map "M-h" #'backward-char)
 (keymap-set vertico-map "M-l" #'forward-char)
 
+;; Colors
+(set-face-attribute 'vertico-current nil :foreground "#fff" :background "#552")
+
 ;; Marginalia #######################################################################################
 
 (unless (package-installed-p 'marginalia)
