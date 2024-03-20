@@ -33,10 +33,16 @@
 (global-treesit-auto-mode)
 
 ;; ELisp ########################################################################
-(setq-default list-indent-offset 2)
+(setq-default lisp-indent-offset 2)
+
+(add-hook 'emacs-lisp-mode-hook
+  (lambda () (setq evil-shift-width lisp-indent-offset)))
 
 ;; HTML #########################################################################
 (setq-default sgml-basic-offset 2)
+
+(add-hook 'sgml-mode-hook
+  (lambda () (setq evil-shift-width sgml-basic-offset)))
 
 ;; (evil-define-key 'normal html-mode-map (kbd "M-b") 'sgml-skip-tag-backward)
 ;; (evil-define-key 'normal html-mode-map (kbd "M-f") 'sgml-skip-tag-forward)
@@ -87,8 +93,8 @@
 
 ;; CSharp #######################################################################
 
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
+;; (setq web-mode-markup-indent-offset 2)
+;; (setq web-mode-code-indent-offset 2)
 
 (add-to-list 'auto-mode-alist '("\\.csproj\\'" . xml-mode))
 (add-to-list 'auto-mode-alist '("\\.cshtml\\'" . sgml-mode))
@@ -114,6 +120,9 @@
 
 (add-to-list 'auto-mode-alist '("\\.ml\\'" . tuareg-mode))
 (add-to-list 'auto-mode-alist '("\\.mli\\'" . tuareg-mode))
+
+(add-hook 'tuareg-mode-hook
+  (lambda () (evil-shift-width tuareg-default-indent)))
 
 ;; (add-to-list 'auto-mode-alist '("\\.ml\\'" . ocaml-ts-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.mli\\'" . ocamli-ts-mode))

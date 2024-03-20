@@ -6,8 +6,8 @@ EXTRA. [X] Vertico (Vertico, Orderless, Marginalia, Consult, Embark) and Corfu
 2. [ ] configure eglot to have the same keybind that I have in neovim
 3. [ ] formatter to use prettier
 4. [ ] linter like flycheck
-5. [ ] snippet engine
-6. [ ] tree file explorer
+5. [X] snippet engine
+6. [X] tree file explorer
 7. [ ] file symbol tree (like ctags)
 
 8. Irony Mode (C/C++ minor mode powered by libclang)

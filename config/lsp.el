@@ -22,6 +22,7 @@
 	  (lambda()
 	    (keymap-set evil-normal-state-map "SPC r n" 'eglot-rename)
 	    (keymap-set evil-normal-state-map "SPC c a" 'eglot-code-actions)
+	    (keymap-set evil-normal-state-map "K" 'eldoc-box-help-at-point)
 	    ))
 
 ;; Eldoc ########################################################################
@@ -41,7 +42,8 @@
 
 (require 'eldoc-box)
 
-(keymap-set eglot-mode-map "M-k" 'eldoc-box-help-at-point)
+;(keymap-set eglot-mode-map "M-k" 'eldoc-box-help-at-point)
+;(keymap-set eglot-mode-map "M-k" 'eldoc-box-help-at-point)
 ;(keymap-set evil-normal-state-map "M-k" 'eldoc-box-help-at-point)
 
 ;; (evil-define-key 'normal 'eldoc-box-mode-map (kbd "K") 'eldoc-box-help-at-point)

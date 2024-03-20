@@ -12,7 +12,7 @@
 ;(setq evil-undo-system 'undo-redo)
 (setq evil-undo-system 'undo-tree)
 (setq evil-want-keybinding nil) ; Evil collection asks for it
-(setq evil-kill-on-visual-paste nil) ;; when you replace in visual mode dont change the register
+(setq evil-kill-on-visual-paste t) ;; when you replace in visual mode dont change the register
 (setq evil-echo-state nil) ;; Dont need this
 
 ;; Windows
@@ -23,10 +23,10 @@
 (setq evil-move-beyond-eol nil)
 (setq evil-cross-lines nil)
 
-;; Indentation
-;(setq evil-auto-indent t)
-;(setq evil-shift-width 4)
-;(setq evil-indent-convert-tabs t)
+;; Indentation (setting different shift-width in ./languages.el)
+(setq evil-auto-indent t)
+(setq evil-shift-width 4)
+(setq evil-indent-convert-tabs t)
 
 ;; Cursor
 (setq evil-normal-state-cursor   '("yellow" box)
@@ -51,6 +51,11 @@
 ;; Move Up/down on wrap text (more repeatable than g j and g k)
 ;(keymap-set evil-normal-state-map "M-j" 'evil-next-visual-line)
 ;(keymap-set evil-normal-state-map "M-k" 'evil-previous-visual-line)
+
+;; Remap Visual Paste (There is a bug that using p on visual mode will replace text with the select text.
+;; That means no change. With this mapping I replace visual selection with the last copied register as
+;; expected in vim)
+(keymap-set evil-visual-state-map "p" (lambda() (interactive) (evil-paste-from-register ?0)))
 
 ;; Tab indents
 (keymap-set evil-normal-state-map "SPC SPC" 'evil-indent)
@@ -163,12 +168,13 @@
 
 ;; Toggle wrap lines
 (keymap-set evil-normal-state-map "SPC h l" 'global-visual-line-mode)
+;; Toggle whitespace
+(keymap-set evil-normal-state-map "SPC h w" 'global-whitespace-mode)
+;; Toggle Tabbar
+(keymap-set evil-normal-state-map "SPC h t" 'tab-bar-mode)
 
 ;; Set wombat theme (in case of error)
 ;(keymap-set evil-normal-state-map "SPC h t" (lambda() (interactive) (load-theme 'wombat t)))
-
-;; Toggle whitespace
-(keymap-set evil-normal-state-map "SPC h w" 'global-whitespace-mode)
 
 ;; Text Scale
 (keymap-set evil-normal-state-map "C-0" 'text-scale-adjust)
