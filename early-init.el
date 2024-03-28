@@ -17,7 +17,7 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
-(set-fringe-mode 20) ;; Adds side padding to frames
+(set-fringe-mode 12) ;; Adds side padding to frames
 
 ;; Tranparency for Terminal #####################################################
 

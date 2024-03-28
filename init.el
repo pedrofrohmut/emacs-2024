@@ -95,13 +95,13 @@
 
 (setq inhibit-startup-message t)
 
-;; Insert spaces  instead of tabs (no \t)
-(setq tab-width 4)
-(setq indent-tabs-mode nil)
-;(setq indent-line-function 'insert-tab)
-
 ;; Tab only indent on the correct position
-(setq tab-always-indent nil)
+(setq tab-always-indent t)
+
+;; Insert spaces  instead of tabs (no \t)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
 
 ;; Line Numbers (If I ever want it back is here)
 (global-display-line-numbers-mode t)
@@ -165,8 +165,7 @@
 ;; Set root dir for project.el
 (setq project-vc-extra-root-markers '(".project.el" ".projectile" ))
 
-;; Set line break to LF
-;; TODO unix and utf-8
+(setq-default buffer-file-coding-system 'utf-8-unix)
 
 ;; Set customize file
 (setq custom-file "~/.config/emacs/emacs-custom.el")

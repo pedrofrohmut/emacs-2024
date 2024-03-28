@@ -122,7 +122,7 @@
 (add-to-list 'auto-mode-alist '("\\.mli\\'" . tuareg-mode))
 
 (add-hook 'tuareg-mode-hook
-  (lambda () (evil-shift-width tuareg-default-indent)))
+  (lambda () (setq evil-shift-width tuareg-default-indent)))
 
 ;; (add-to-list 'auto-mode-alist '("\\.ml\\'" . ocaml-ts-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.mli\\'" . ocamli-ts-mode))

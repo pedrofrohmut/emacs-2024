@@ -25,19 +25,7 @@ disturbing the layout and opened windows
 ;; TODOS #############################################################################################
 
 ; extra 1: How-to auto format on copy and paste
-; extra 2: Highlight trailing lines and space
-
-; X 1. Add witch-key
-; X  1.1 See if General is needed
-; X  1.2 Check out about Hydra
-
-; X 2. Add no-littering
-
-; X 3. Set variable-pitch font and ligatures
-; X   3.1 https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
-; X   3.2 https://github.com/mickeynp/ligature.el
-
-; 14. Check out Emacs Awesome: The Programming section and below
+; extra 2: Highlight trailing lines and spaces
 
 ; 15. Org Mode
 

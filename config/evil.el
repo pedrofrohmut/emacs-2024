@@ -101,7 +101,8 @@
 (keymap-set evil-normal-state-map "SPC t u" 'tab-undo)
 (keymap-set evil-normal-state-map "SPC t l" 'tab-move)
 (keymap-set evil-normal-state-map "SPC t h" (lambda() (interactive) (tab-move -1)))
-(keymap-set evil-normal-state-map "SPC t o" (lambda() (interactive) (tab-bar-close-other-tabs) (tab-bar-mode nil)))
+
+(keymap-set evil-normal-state-map "SPC t o" 'tab-bar-close-other-tabs)
 
 ;; Tabs by Number
 (keymap-set evil-normal-state-map "M-1" (lambda() (interactive) (tab-select 1)))
@@ -144,10 +145,8 @@
 (keymap-set evil-normal-state-map "C-k" 'evil-window-up)
 (keymap-set evil-normal-state-map "C-l" 'evil-window-right)
 
-;; TODO: check if it errors and fix if needed
-(keymap-set evil-normal-state-map "M-o" (lambda () (interactive)
-					  (delete-other-windows)
-					  (neotree-hide)))
+(keymap-set evil-normal-state-map "M-o"
+  (lambda () (interactive) (delete-other-windows) (neotree-hide)))
 
 ;; Utils ############################################################################################
 
@@ -162,6 +161,9 @@
 (keymap-set evil-normal-state-map "C-b" 'project-switch-to-buffer)
 ;; (keymap-set evil-normal-state-map "C-n" 'next-buffer)
 ;; (keymap-set evil-normal-state-map "C-p" 'previous-buffer)
+
+(keymap-set evil-normal-state-map "SPC b u"
+  (lambda () (interactive) (set-buffer-file-coding-system 'unix)))
 
 ;; Restart Emacs
 ;(keymap-set evil-normal-state-map "SPC h r r" 'restart-emacs)
