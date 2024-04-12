@@ -6,9 +6,14 @@
 (require 'eglot)
 
 ;; To keep eldoc from displaying documentation at point
-(add-to-list 'eglot-ignored-server-capabilites :hoverProvider)
-(add-to-list 'eglot-ignored-server-capabilites :inlayHintProvider)
+;(add-to-list 'eglot-ignored-server-capabilites :hoverProvider)
+;(add-to-list 'eglot-ignored-server-capabilites :inlayHintProvider)
 (add-to-list 'eglot-ignored-server-capabilites :documentFormatting)
+(add-to-list 'eglot-ignored-server-capabilites :documentFormattingProvider)
+
+(set-face-attribute 'eglot-highlight-symbol-face nil
+  :background "#552" :foreground "#fff" :inherit nil)
+
 
 ;; Servers ######################################################################
 
@@ -22,8 +27,7 @@
 	  (lambda()
 	    (keymap-set evil-normal-state-map "SPC r n" 'eglot-rename)
 	    (keymap-set evil-normal-state-map "SPC c a" 'eglot-code-actions)
-	    (keymap-set evil-normal-state-map "K" 'eldoc-box-help-at-point)
-	    ))
+	    (keymap-set evil-normal-state-map "K" 'eldoc-box-help-at-point)))
 
 ;; Eldoc ########################################################################
 

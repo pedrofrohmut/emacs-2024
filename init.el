@@ -204,6 +204,7 @@
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
 (keymap-set evil-normal-state-map "C-M-i" #'my/switch-to-recent-buffer)
+(keymap-set evil-normal-state-map "g b" #'my/switch-to-recent-buffer)
 
 ;; Startup Function #############################################################
 

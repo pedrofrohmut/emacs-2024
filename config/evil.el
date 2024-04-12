@@ -158,7 +158,11 @@
 (keymap-set evil-normal-state-map "SPC b p" 'previous-buffer)
 (keymap-set evil-normal-state-map "SPC b d" 'kill-this-buffer)
 
+(setq project-ignore-buffer-conditions
+  '("*Messages*" "*scratch*" "*Ibuffer*" (derived-mode . dired-mode) (derived-mode . helpful-mode)))
+
 (keymap-set evil-normal-state-map "C-b" 'project-switch-to-buffer)
+
 ;; (keymap-set evil-normal-state-map "C-n" 'next-buffer)
 ;; (keymap-set evil-normal-state-map "C-p" 'previous-buffer)
 
