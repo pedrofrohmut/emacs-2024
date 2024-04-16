@@ -24,8 +24,8 @@
 (evil-define-key 'normal dired-mode-map (kbd "SPC n d") 'dired-create-directory)
 (evil-define-key 'normal dired-mode-map (kbd "SPC r n") 'dired-do-rename)
 
-(evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
-(evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-file)
+(evil-define-key 'normal dired-mode-map (kbd "H") 'dired-up-directory)
+(evil-define-key 'normal dired-mode-map (kbd "L") 'dired-find-file)
 (evil-define-key 'normal dired-mode-map (kbd "g o") 'dired-find-file-other-window)
 
 ;; TODO: check out % commands of dired

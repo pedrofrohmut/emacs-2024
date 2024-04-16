@@ -63,6 +63,9 @@
 ;; Eglot LSP
 (load "~/.config/emacs/config/lsp.el")
 
+;; Debugging
+(load "~/.config/emacs/config/debug.el")
+
 ;; Markdown
 (load "~/.config/emacs/config/markdown.el")
 
