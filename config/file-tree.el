@@ -7,7 +7,8 @@
 (setq neo-window-fixed-size nil)
 (setq neo-theme 'nerd)
 
-(keymap-set evil-normal-state-map "<f8>" 'neotree-toggle)
+;(keymap-set evil-normal-state-map "<f8>" 'neotree-toggle)
+(keymap-set evil-normal-state-map "M-8" 'neotree-toggle)
 
 ;; Use with evil mode
 (add-hook 'neotree-mode-hook

@@ -28,7 +28,8 @@
 (load "~/.config/emacs/config/evil.el")
 
 ;; Terminals
-(load "~/.config/emacs/config/terminals.el")
+;(load "~/.config/emacs/config/terminals.el")
+(load "~/.config/emacs/config/alt-terminals.el")
 
 ;; Utils: Visual Fill Column, Restart Emacs
 (load "~/.config/emacs/config/utils.el")
@@ -61,7 +62,8 @@
 (load "~/.config/emacs/config/languages.el")
 
 ;; Eglot LSP
-(load "~/.config/emacs/config/lsp.el")
+;(load "~/.config/emacs/config/lsp.el")
+(load "~/.config/emacs/config/alt-lsp.el")
 
 ;; Debugging
 (load "~/.config/emacs/config/debug.el")

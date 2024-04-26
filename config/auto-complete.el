@@ -38,19 +38,19 @@
 
 (keymap-set evil-insert-state-map "C-f" 'cape-file)
 
-;; Cape control completion table refreshes
-(advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
-
-;; Making a Cape Super Capf for Eglot
-;; add eglot-completion-at-point to default completion at point function
-(defun my/eglot-capf ()
-  (setq-local completion-at-point-functions
-	      (list (cape-capf-super
-		     #'eglot-completion-at-point
-		     #'cape-dabbrev
-		     #'cape-file))))
-
-(add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
+;; ;; Cape control completion table refreshes
+;; (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
+;;
+;; ;; Making a Cape Super Capf for Eglot
+;; ;; add eglot-completion-at-point to default completion at point function
+;; (defun my/eglot-capf ()
+;;   (setq-local completion-at-point-functions
+;; 	      (list (cape-capf-super
+;; 		     #'eglot-completion-at-point
+;; 		     #'cape-dabbrev
+;; 		     #'cape-file))))
+;;
+;; (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
 
 ;; Prescient.el #################################################################
 

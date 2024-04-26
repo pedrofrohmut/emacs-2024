@@ -13,3 +13,4 @@ recentf
 emacs-custom.el
 .cache/
 **/*.elc
+.lsp-session-v1

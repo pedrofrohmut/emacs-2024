@@ -10,3 +10,10 @@
       (message "No project found"))))
 
 (keymap-set evil-normal-state-map "SPC x x" #'my/project-terminal)
+
+(keymap-set evil-normal-state-map "SPC x o"
+  (lambda ()
+    (interactive)
+    (split-window-horizontally)
+    (other-window 1)
+    (my/project-terminal)))

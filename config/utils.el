@@ -12,10 +12,10 @@
 
 ;; Editor config ################################################################
 
-(unless (package-installed-p 'editorconfig)
-  (package-install 'editorconfig))
+;(unless (package-installed-p 'editorconfig)
+;  (package-install 'editorconfig))
 
-(editorconfig-mode)
+;(editorconfig-mode)
 
 ;; Electric Pairs ###############################################################
 

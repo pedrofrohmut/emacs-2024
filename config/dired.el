@@ -37,12 +37,12 @@
 ;(keymap-set evil-normal-state-map "SPC f s" 'dired-sidebar-toggle-sidebar)
 ;(keymap-set evil-normal-state-map "C-b" 'dired-sidebar-toggle-sidebar)
 
-;; Divish ######################################################################
+;; Dired Subtree ################################################################
 
-(unless (package-installed-p 'dired-subtree)
-  (package-install 'dired-subtree))
-
-(evil-define-key 'normal dired-mode-map (kbd "o") 'dired-subtree-toggle)
+;;(unless (package-installed-p 'dired-subtree)
+;;  (package-install 'dired-subtree))
+;;
+;;(evil-define-key 'normal dired-mode-map (kbd "o") 'dired-subtree-toggle)
 
 ;; Divish ######################################################################
 

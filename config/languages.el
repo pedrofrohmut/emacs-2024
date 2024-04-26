@@ -57,6 +57,11 @@
 (setq js-indent-level 4)
 (setq js-switch-indent-offset 4)
 
+(unless (package-installed-p 'prettier-js)
+  (package-install 'prettier-js))
+
+(require 'prettier-js)
+
 ;; Typescript ###################################################################
 (setq-default typescript-ts-mode-indent-offset 4)
 ;;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
@@ -131,3 +136,9 @@
 ;;   (package-install 'ocamlformat))
 
 ;; (require 'ocamlformat)
+
+
+;; Lua ##########################################################################
+
+(unless (package-installed-p 'lua-mode)
+  (package-install 'lua-mode))

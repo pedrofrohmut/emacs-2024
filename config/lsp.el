@@ -7,7 +7,7 @@
 
 ;; To keep eldoc from displaying documentation at point
 ;(add-to-list 'eglot-ignored-server-capabilites :hoverProvider)
-;(add-to-list 'eglot-ignored-server-capabilites :inlayHintProvider)
+(add-to-list 'eglot-ignored-server-capabilites :inlayHintProvider)
 (add-to-list 'eglot-ignored-server-capabilites :documentFormatting)
 (add-to-list 'eglot-ignored-server-capabilites :documentFormattingProvider)
 
@@ -21,7 +21,7 @@
 	    '(js-ts-mode . ("typescript-language-server" "--stdio")))
 
 (add-to-list 'eglot-server-programs
-	    `(csharp-mode . ("omnisharp" "-lsp")))
+	    '(csharp-mode . ("omnisharp" "-lsp")))
 
 (add-hook 'eglot-managed-mode-hook
 	  (lambda()
