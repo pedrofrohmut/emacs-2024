@@ -62,8 +62,8 @@
 (load "~/.config/emacs/config/languages.el")
 
 ;; Eglot LSP
-;(load "~/.config/emacs/config/lsp.el")
-(load "~/.config/emacs/config/alt-lsp.el")
+(load "~/.config/emacs/config/lsp.el")
+;(load "~/.config/emacs/config/alt-lsp.el")
 
 ;; Debugging
 (load "~/.config/emacs/config/debug.el")
@@ -220,11 +220,15 @@
                     (time-subtract after-init-time before-init-time)))
            gcs-done))
 
-;; (defun my/restore-gc-threshhold ()
-;;   (setq gc-cons-threshold (* 50 1000 1000))) ;; 50 Mega Bytes
+(defun my/restore-gc-threshhold ()
+  (setq gc-cons-threshold (* 800 1000))) ;; 800 Kilo Bits (Original)
+  ;; (setq gc-cons-threshold (* 50 1000 1000))) ;; 50  Mega Bits
 
 ;; Hooks #########################################################################
 
-;(add-hook 'emacs-startup-hook #'my/restore-gc-threshhold)
+;; Startup
 (add-hook 'emacs-startup-hook #'my/display-startup-time)
-(add-hook 'write-file-hooks    'delete-trailing-whitespace)
+(add-hook 'emacs-startup-hook #'my/restore-gc-threshhold)
+
+;; On file save
+(add-hook 'write-file-hooks 'delete-trailing-whitespace)
